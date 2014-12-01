@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection">
+<title>华客惠</title>
+
+<script src="__PUBLIC__/js/jquery-1.8.0.min.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.3.min176ed4.js"></script>
+<script type="text/javascript">
+function submitForm(){
+	var recommend_url="{:U('Home/Index/add_members')}";
+	var oname = $("#oname").val();
+	var otel=$('#otel').val();
+	var oidnumber=$("#oidnumber").val();
+	var periods=$("#periods").val();
+	var building=$("#building").val();
+	var unit=$("#unit").val();
+	var room=$("#room").val();
+	if(oname==""||oname=="请填写您的姓名"||!/^\s*[\u4e00-\u9fa5]{1,}[\u4e00-\u9fa5.·]{0,15}[\u4e00-\u9fa5]{1,}\s*$/.test(oname)){
+		show_message("请填写正确姓名");	
+	}else if(otel==""|| !/^0?1(3|5|8)\d{9}$/.test(otel)){
+		show_message("请输入正确的手机号");
+	}else if(oidnumber==""||!/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(oidnumber)){
+		show_message("请输入正确的身份证号");
+	}else if(periods=="-期数-"){
+		show_message("请输入楼盘期数");
+	}else if(building=="-楼栋号-"){
+		show_message("请输入楼栋号");
+	}else if(unit=="-单元号-"){
+		show_message("请输入单元号");
+	}else if(room==""||room=="房号"){
+		show_message("请输入房号");
+	}else{
+		$.post(recommend_url,{'oname':oname,'otel':otel,'oidnumber':oidnumber,'periods':periods,'building':building,'unit':unit,'room':room},function(data){
+		if(data.status==1){
+			show_message("注册成功");
+			window.location="{:U('Home/Index/show')}";
+		}else if(data.status==2){
+			show_message("您已经注册了");
+		    window.location="{:U('Home/Index/show')}";
+		}else{
+			 window.location.reload();
+		}
+	});
+	}
+}
+function show_message(msg){
+	$('.hhhh').html(msg);
+	$('.hhhh').animate({top:50},500,function(){
+		window.setTimeout("hide_message()",2000);
+	});
+}
+
+function hide_message(){
+	$('.hhhh').animate({top:-80},300);
+}
+</script>
+<style>
+.hhhh{ position:fixed; top:-80px; left:5%; z-index:9999; width: 90%; padding: 15px 0px; background-color: #ff5f6e; border: 1px solid #b10000; margin: auto; border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px; box-shadow: 0px 0px 2px #999999; -ms-box-shadow: 0px 0px 2px #999999; -webkit-box-shadow: 0px 0px 2px #999999; -moz-box-shadow: 0px 0px 2px #999999; -o-box-shadow: 0px 0px 2px #999999; margin-top: 20px; color: #fff; font-size: 14px; font-weight: bold; text-align: center; border: 2px solid #fff; }
+.state{color:#da3c3c; font-family:"微软雅黑";}
+.state_1{ font-size:13px; text-align:left; margin-top:1%; font-family:"微软雅黑";margin-left:5px;}
+.state_2{ font-size:13px; text-align:left; margin-top:1%; font-family:"微软雅黑";margin-left:5px;}
+.agent_apply img{width:60%; margin:0 auto; margin-top:1%;}
+.img img{width:100%;}
+</style>
+<link href="css/style_1.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="hhhh"></div>
+	<div class="img">
+		<img src="images/img.png" />
+		<a href="#"> <div class="cha">置业顾问登录入口 ></div></a>
+
+	</div>
+    	<form action="__URL__/regist" method="post">
+		<div class="agent_apply">
+			<img src="images/logo_2.png" />
+			<div class="agent_apply_box">
+				<div class="agent_apply_sb">
+				<!-- 注册姓名 -->
+					<input type="text" class="agent_apply_style" value="请填写您的姓名"
+						name="oname" type="text" id="oname"
+						onmouseout="this.style.borderColor=''"
+						onFocus="if (value =='请填写您的姓名'){value =''}"
+						onBlur="if (value ==''){value='请填写您的姓名'}" />
+                   <!-- 注册姓名结束 -->
+				</div>
+			</div>
+			<div class="agent_apply_box">
+				<div class="agent_apply_sb">
+				<!-- 注册手机号-->
+					<input type="tel" class="agent_apply_style" value="请输入手机号"
+						name="otel"  id="otel"
+						onmouseout="this.style.borderColor=''"
+						onFocus="if (value =='请输入手机号'){value =''}"
+						onBlur="if (value ==''){value='请输入手机号'}" />
+                  <!-- 注册手机号结束 -->
+				</div>
+			</div>
+			<div class="agent_apply_box">
+				<div class="agent_apply_sb">
+				<!-- 注册身份证号开始 -->
+					<input type="tel" class="agent_apply_style" value="请输入身份证号码"
+						name="oidnumber"  id="oidnumber"
+						onmouseout="this.style.borderColor=''"
+						onFocus="if (value =='请输入身份证号码'){value =''}"
+						onBlur="if (value ==''){value='请输入身份证号码'}" />
+						<!-- 注册身份证号开始 -->
+				</div>
+			</div>
+			
+			<div class="agent_apply_box">
+				<h5>--老业主房号--</h5>
+				<div class="agent_apply_sb">
+					<!-- 注册置业顾问-->                   
+						<select name="periods" class="agent_apply_style1" id="periods">
+							<option >-期数-</option>
+							<option>一期（伯爵遇I）</option>
+							<option>二期（伯爵遇II）</option>
+							<option>六期（LOMO时光）</option>
+							<option>七期（LOMO时代）</option>
+						</select>
+                        <select name="building" class="agent_apply_style1" id="building">
+							<option >-楼栋号-</option>
+							<option>01栋</option><option>02栋</option><option>03栋</option><option>04栋</option>
+<option>05栋</option><option>06栋</option><option>07栋</option><option>08栋</option>
+<option>09栋</option><option>10栋</option><option>11栋</option><option>12栋</option>
+<option>13栋</option><option>14栋</option><option>15栋</option><option>16栋</option>
+<option>17栋</option><option>18栋</option><option>19栋</option><option>20栋</option>
+<option>21栋</option><option>22栋</option><option>23栋</option>
+						</select>
+                         <select name="unit" class="agent_apply_style1" id="unit">
+							<option>-单元号-</option>
+							<option>01单元</option>
+							<option>02单元</option>
+							<option>03单元</option>
+							
+						</select>
+                        <input type="tel" class="agent_apply_style" value="房号"
+						name="room"  id="room"
+						onmouseout="this.style.borderColor=''"
+						onFocus="if (value =='房号'){value =''}"
+						onBlur="if (value ==''){value='房号'}" />
+                  <!-- 注册置业顾问结束 -->
+			</div>
+            <div>
+            	<div class="state_1"><samp class="state">示例说明：</samp>
+                二期03栋02单元601</div>
+                <div class="state_2"><samp class="state">*注释：</samp>楼栋号为《商品房买卖合同》中的建筑楼号</div>
+            </div>
+				<div class="agent_apply_box">
+					<div class="agent_apply_sb">
+					<input type="button" value="完成注册" name="sub" onclick="submitForm();"
+						class="agent_but agent_apply_style" />
+				</div>
+			</div>
+		</div>
+	</form>
+    </div>
+<div style=" color:#fff; font-size:12px; text-align:center;">易享科技出品</div>
+</body>
+</html>

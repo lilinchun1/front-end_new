@@ -1,0 +1,141 @@
+@charset "utf-8";
+
+/*!
+ * Created with IntelliJ IDEA. 
+ * User: llc 
+ * Date: 2014/12/1 
+ * Time: 9:53 
+ * To change this template use File | Settings | File Templates. 
+ */
+
+@import "rest";
+
+/*-----------------------header start----------------------*/
+.body-wrap{
+  @extend %wrap-100p;
+  background: #f5f5f5;
+}
+.header{
+  position: relative;
+  @extend %wrap-100p;
+}
+.countdown{
+  @extend %wrap-100p;
+}
+.countdown-tt{
+  margin: 0 auto;
+  width: 46%;
+  h2{
+    position: relative;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    font-size: 1.4em;
+    color: $color-red;
+    &:after{
+      content: "";
+      width: 65px;
+      height: 1px;
+      background: $color-red;
+      position: absolute;
+      top: 11px;
+      right: -54px;
+    }
+    &:before{
+      content: "";
+      width: 70px;
+      height: 1px;
+      background: $color-red;
+      position: absolute;
+      top: 11px;
+      left: -60px;
+    }
+  }
+}
+.countdown-con{
+  height: 28px;
+  .clock{
+    margin: 0 auto;
+    width: 78%;
+    overflow: hidden;
+    li{
+      float: left;
+      height: 28px;
+    }
+    .date{
+      width: 40px;
+      line-height: 28px;
+      text-align: center;
+      color: #ffffff;
+      text-indent: 4px;
+      letter-spacing: 7px;
+      font-size: 2.2em;
+      background: #fff image-url("clock-bg.png") 0 0 no-repeat;
+      -webkit-background-size: 40px auto;
+      background-size: 40px auto;
+    }
+    .date-wz{
+      padding: 0 2px;
+      font-size: 1.2em;
+      color: $color-red;
+      line-height: 40px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px){
+  .countdown-tt{
+    margin: 0 auto;
+    width: 46%;
+    h2{
+      height: 44px;
+      line-height: 44px;
+      font-size: 2.2em;
+      &:after{
+        content: "";
+        width: 150px;
+        top: 20px;
+        right: -90px;
+      }
+      &:before{
+        width: 150px;
+        top: 20px;
+        left: -90px;
+      }
+    }
+  }
+  .countdown-con{
+    height: 56px;
+    .clock{
+      width: 64%;
+      li{
+        height: 56px;
+      }
+      .date{
+        width: 80px;
+        line-height: 56px;
+        text-align: center;
+        color: #ffffff;
+        text-indent: 8px;
+        letter-spacing: 18px;
+        font-size: 4em;
+        background: #fff image-url("clock-bg.png") 0 0 no-repeat;
+        -webkit-background-size: 80px auto;
+        background-size: 80px auto;
+      }
+      .date-wz{
+        padding: 0 6px;
+        font-size: 2em;
+        color: $color-red;
+        line-height: 80px;
+      }
+    }
+  }
+}
+/*-----------------------header end----------------------*/
+.slider{
+  margin-top: 7px;
+  @extend %wrap-100p;
+  height: 215px;
+  background: #ffffff;
+}

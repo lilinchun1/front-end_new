@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection">
+<meta name="format-detection" content="telephone=no">
+<title>Document</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/simple-app.css">
+</head>
+<body>
+<div class="swiper-pages swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <div class="swiper-container scroll-container swiper-gallery">
+                <div class="swiper-scrollbar"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/1-1.jpg" alt=""></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-container scroll-container swiper-gallery">
+                <div class="swiper-scrollbar"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/2-1.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-container scroll-container swiper-gallery">
+                <div class="swiper-scrollbar"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/3-1.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-container scroll-container swiper-gallery">
+                <div class="swiper-scrollbar"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/4-1.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-container scroll-container swiper-gallery">
+                <div class="swiper-scrollbar"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="img/5-1.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="slide-btn">
+    <div class="slide-btn-con">
+        <a class="left-btn" id="J_code">立即购买</a>
+        <a class="right-btn" onclick="document.getElementById('pop-up').style.display='block';">分享好友</a>
+    </div>
+</div>
+
+<div id="pop-up" style=" display:none;" onclick="document.getElementById('pop-up').style.display='none';">
+    <div class="pop"></div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/idangerous.swiper-2.0.min.js"></script>
+<script>
+	$(function(){
+	    $(".box-wrap").css("height", document.body.clientHeight);
+	});
+
+    var pages = $('.swiper-pages').swiper();
+    document.body.addEventListener('touchmove', function (event) {
+        event.preventDefault();
+    }, false);
+</script>
+</body>
+</html>

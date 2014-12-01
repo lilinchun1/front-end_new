@@ -1,0 +1,434 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1">
+<title>HTML</title>
+<link rel="icon" href="favicon.png" type="image/png">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/responsive.css" rel="stylesheet" type="text/css">
+<link href="css/animate.css" rel="stylesheet" type="text/css">
+
+<!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
+
+<script type="text/javascript" src="js/wow.js"></script>
+
+
+
+
+<!--[if lt IE 9]>
+    <script src="js/respond-1.1.0.min.js"></script>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/html5element.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+	$(document).ready(function(e) {
+        $('.res-nav_click').click(function(){
+		$('ul.toggle').slideToggle(600)	
+			});	
+			
+	$(document).ready(function() {
+$(window).bind('scroll', function() {
+         if ($(window).scrollTop() > 0) {
+             $('#header_outer').addClass('fixed');
+         }
+         else {
+             $('#header_outer').removeClass('fixed');
+         }
+    });
+	
+	  });
+	  
+
+		    });	
+function resizeText() {
+	var preferredWidth = 767;
+	var displayWidth = window.innerWidth;
+	var percentage = displayWidth / preferredWidth;
+	var fontsizetitle = 25;
+	var newFontSizeTitle = Math.floor(fontsizetitle * percentage);
+	$(".divclass").css("font-size", newFontSizeTitle)
+}
+</script>
+</head>
+
+<body>
+
+<!--Header_section-->
+<!--<header id="header_outer">
+  <div class="container">
+    <div class="header_section">
+      <div class="logo"><a href="javascript:void(0)"><img src="img/logob.png" alt=""></a></div>
+      <nav class="nav" id="nav">
+        <ul class="toggle">
+          <li><a href="#">首页</a></li>
+          <li><a href="#">功能介绍</a></li>
+          <li><a href="#">产品介绍</a></li>
+          <li><a href="#">加盟</a></li>
+          <li><a href="#">关于我们</a></li>
+        </ul>
+        <ul class="">
+         <li><a href="#">首页</a></li>
+          <li><a href="#">功能介绍</a></li>
+          <li><a href="#">产品介绍</a></li>
+          <li><a href="#">加盟</a></li>
+          <li><a href="#">关于我们</a></li>
+        </ul>
+      </nav>
+      <a class="res-nav_click animated wobble wow"  href="javascript:void(0)"><i class="fa-bars"></i></a> </div>
+  </div>
+</header>
+
+
+-->
+
+
+<section  id="service">
+  <div class="container">
+    <div class="service_area">
+      <div class="row">
+        <div class="col-lg-4 animated fadeInDown" style="background:#f56eab; border-bottom:3px solid #e93888;">
+          <div class="service_block" style="background:#f56eab">
+          <div class="img"><img src="img/img_0.png"></div>
+            <div class="delay-03s animated wow  zoomIn"><h2>销售金额</h2></div>
+            <h3 class="animated fadeInUp wow left">今日122,121</h3>
+            <h3 class="animated fadeInUp wow left">总额122,121</h3>
+            </div>
+        </div>
+        <div class="col-lg-4 animated fadeInDown" style="background:#f56eab; border-bottom:3px solid #e93888;">
+          <div class="service_block" style="background:#f56eab">
+          <div class="img"><img src="img/img_0.png"></div> 
+          <div class="delay-03s animated wow  zoomIn"><h2>销售金额</h2></div>    
+            <p class="animated fadeInDown wow left">昨日22,11</p>
+            <p class="animated fadeInDown wow left">日均22,11</p>
+            
+          </div>
+        </div>
+        <div class="col-lg-4 animated fadeInDown"  style="background:#7cc576; border-bottom:3px solid #44b03b">
+          <div class="service_block">
+          <div class="img"><img src="img/img_1.png"></div>
+            <div class=" icon2  delay-03s animated wow zoomIn"><h2>消费者数</h2></div>
+           <h3 class="animated fadeInUp wow left">今日122,121</h3>
+            <p class="animated fadeInDown wow left">昨日22,11</p>
+            <p class="animated fadeInDown wow left">日均22,11</p>
+            <h3 class="animated fadeInUp wow left">总额122,121</h3>
+            
+            
+          </div>
+        </div>
+        <div class="col-lg-4 animated fadeInDown"  style="background:#49b5e7; border-bottom:3px solid #0a8dc9">
+          <div class="service_block">
+          <div class="img"><img src="img/img_2.png"></div>
+            <div class=" icon3  delay-03s animated wow zoomIn"> <h2>商品访问数</h2> </div>
+            <h3 class="animated fadeInUp wow left">今日122,121</h3>
+            <p class="animated fadeInDown wow left">昨日22,11</p>
+            <p class="animated fadeInDown wow left">日均22,11</p>
+            <h3 class="animated fadeInUp wow left">总额122,121</h3>
+            
+          </div>
+        </div>
+                <div class="col-lg-4 animated fadeInDown"  style="background:#ff9d33; border-bottom:3px solid #e07400">
+          <div class="service_block">
+          <div class="img"><img src="img/img_3.png"></div>
+            <div class=" icon2  delay-03s animated wow zoomIn"> <h2>成交笔数</h2> </div>
+           <h3 class="animated fadeInUp wow left">今日122,121</h3>
+            <p class="animated fadeInDown wow left">昨日22,11</p>
+            <p class="animated fadeInDown wow left">日均22,11</p>
+            <h3 class="animated fadeInUp wow left">总额122,121</h3>
+            
+          </div>
+        </div>
+                <div class="col-lg-4 animated fadeInDown"  style="background:#ff4633; border-bottom:#d81400 3px solid;">
+          <div class="service_block">
+          <div class="img"><img src="img/img_4.png"></div>
+            <div class=" icon2  delay-03s animated wow zoomIn"><h2>登陆人数</h2></div>
+           <h3 class="animated fadeInUp wow left">今日122,121</h3>
+            <p class="animated fadeInDown wow left">昨日22,11</p>
+            <p class="animated fadeInDown wow left">日均22,11</p>
+            <h3 class="animated fadeInUp wow left">总额122,121</h3>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="main-section" id="client_outer"><!--main-section client-part-start-->
+
+  <div class="client_area ">
+    <div class="client_section animated  fadeInUp wow">
+      <h2>最近15天销售额</h2>
+      <div class="client_profile">
+        <div class="client_profile_pic"><img src="img/client-pic1.jpg" alt=""></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="client_section animated  fadeInUp wow">
+      <h2>最近15天微代数</h2>
+      <div class="client_profile-1">
+        <div class="client_profile_pic"><img src="img/client-pic2.jpg" alt=""></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="main-section team" id="team"><!--main-section team-start-->
+  <div class="container">
+    <div class="team-leader-block clearfix">
+      <div class="team-leader-box">
+        <div class="team-leader wow fadeInDown delay-03s">
+         <h2>热销商品 TOP5</h2>
+          <div class="team-leader-shadow">
+          <table width="100%">
+            	<tr>
+                	<th >商品名称</th>
+                    <th>商品单价</th>
+                    <th >今日销量</th>
+                    <th>总销售</th>
+                    <th>总访问量</th>
+                    <th>转化率</th>
+                    
+                </tr>
+            	<tr class="green">
+                	<th class="th"> 进到特省8-10支比海参干货更方便</th>
+                    <th class="green">960</th>
+                    <th class="res">100</th>
+                    <th class="ser">600</th>
+                    <th class="ser">4000</th>
+                    <th class="ser">23%</th>
+                </tr>
+                <tr class="blue">
+                	<th class="th"> 进到特省8-10支比海参干更方便</th>
+                    <th class="blue">960</th>
+                    <th class="blue">100</th>
+                    <th class="ser">600</th>
+                    <th class="ser">4000</th>
+                    <th class="ser">23%</th>
+                </tr>
+                <tr class="yellow">
+                	<th class="th"> 进到特省8-10支比海参干货啊啊啊啊啊啊啊啊啊啊啊啊啊啊</th>
+                    <th class="yellow">960</th>
+                    <th class="yellow">100</th>
+                    <th class="yellow">600</th>
+                    <th class="ser">4000</th>
+                    <th class="ser">23%</th>
+                </tr>
+                
+                 <tr class="orange">
+                	<th class="th"> 进到特省8-10支比海参干货啊啊啊啊啊啊啊啊啊啊啊啊啊啊</th>
+                    <th class="orange">960</th>
+                    <th class="orange">100</th>
+                    <th class="orange">600</th>
+                    <th class="orange">4000</th>
+                    <th class="ser">23%</th>
+                </tr>
+                 <tr>
+                	<th class="th"> 进到特省8-10支比海参干货啊啊啊啊啊啊啊啊啊啊啊啊啊啊</th>
+                    <th class="res">960</th>
+                    <th class="res">100</th>
+                    <th class="ser">600</th>
+                    <th class="ser">4000</th>
+                    <th class="ser">23%</th>
+                </tr>
+                
+                                
+            </table>
+          
+        </div>
+        </div>
+        </div>
+        
+      <div class="team-leader-box-1">
+        <div class="team-leader  wow fadeInDown delay-06s">
+         <h2>今日热销 TOP5</h2>
+          <div class="team-leader-shadow">
+         <table width="100%">
+            	<tr>
+                	<th>商品名称</th>
+                    <th>商品单价</th>
+                    <th>今日销量</th>
+                   
+                    
+                </tr>
+            	<tr class="green">
+                	<th class="th_1"> 进到特省8-10支比海参干货更方便</th>
+                    <th class="green">960</th>
+                    <th>100</th>
+                  
+                </tr>
+                <tr class="blue">
+                	<th class="th_1"> 进到特省8-10支比海参干更方便</th>
+                    <th class="blue">960</th>
+                    <th class="blue">100</th>
+                    
+                </tr>
+                <tr class="yellow">
+                	<th class="th_1"> 进到特省8-10支比海参干货啊啊啊啊啊啊啊啊啊啊啊啊啊啊</th>
+                    <th class="yellow">960</th>
+                    <th>100</th>
+                    
+                </tr>
+                
+                 <tr class="orange">
+                	<th class="th_1"> 进到特省8-10支比海参干货啊啊啊啊啊啊啊啊啊啊啊啊啊啊</th>
+                    <th  class="orange">960</th>
+                    <th>100</th>
+                   
+                </tr>
+                 <tr class="bottom">
+                	<th class="th_1"> 进到特省8-10支比海参干货啊啊啊啊啊啊啊啊啊啊啊啊啊啊</th>
+                    <th>960</th>
+                    <th>100</th>
+                   
+                </tr>
+                
+                                
+            </table>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--main-section team-end-->
+
+
+<!--导航-->
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $('#header_outer').scrollToFixed();
+        $('.res-nav_click').click(function(){
+            $('.main-nav').slideToggle();
+            return false    
+            
+        });
+        
+    });
+</script> 
+<script>
+    wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       100
+      }
+    );
+    wow.init();
+    document.getElementById('').onclick = function() {
+      var section = document.createElement('section');
+      section.className = 'wow fadeInDown';
+	  section.className = 'wow shake';
+	  section.className = 'wow zoomIn';
+	  section.className = 'wow lightSpeedIn';
+      this.parentNode.insertBefore(section, this);
+    };
+  </script> 
+<script type="text/javascript">
+	$(window).load(function(){
+		
+		$('a').bind('click',function(event){
+			var $anchor = $(this);
+			
+			$('html, body').stop().animate({
+				scrollTop: $($anchor.attr('href')).offset().top - 91
+			}, 1500,'easeInOutExpo');
+			/*
+			if you don't want to use the easing effects:
+			$('html, body').stop().animate({
+				scrollTop: $($anchor.attr('href')).offset().top
+			}, 1000);
+			*/
+			event.preventDefault();
+		});
+	})
+</script> 
+
+
+<script type="text/javascript">
+
+   
+  jQuery(document).ready(function($){     
+// Portfolio Isotope
+	var container = $('#portfolio-wrap');	
+	
+
+	container.isotope({
+		animationEngine : 'best-available',
+	  	animationOptions: {
+	     	duration: 200,
+	     	queue: false
+	   	},
+		layoutMode: 'fitRows'
+	});	
+
+	$('#filters a').click(function(){
+		$('#filters a').removeClass('active');
+		$(this).addClass('active');
+		var selector = $(this).attr('data-filter');
+	  	container.isotope({ filter: selector });
+        setProjects();		
+	  	return false;
+	});
+		
+		
+		function splitColumns() { 
+			var winWidth = $(window).width(), 
+				columnNumb = 1;
+			
+			
+			if (winWidth > 1024) {
+				columnNumb = 4;
+			} else if (winWidth > 900) {
+				columnNumb = 2;
+			} else if (winWidth > 479) {
+				columnNumb = 2;
+			} else if (winWidth < 479) {
+				columnNumb = 1;
+			}
+			
+			return columnNumb;
+		}		
+		
+		function setColumns() { 
+			var winWidth = $(window).width(), 
+				columnNumb = splitColumns(), 
+				postWidth = Math.floor(winWidth / columnNumb);
+			
+			container.find('.portfolio-item').each(function () { 
+				$(this).css( { 
+					width : postWidth + 'px' 
+				});
+			});
+		}		
+		
+		function setProjects() { 
+			setColumns();
+			container.isotope('reLayout');
+		}		
+		
+		container.imagesLoaded(function () { 
+			setColumns();
+		});
+		
+	
+		$(window).bind('resize', function () { 
+			setProjects();			
+		});
+
+});
+$( window ).load(function() {
+	jQuery('#all').click();
+	return false;
+});
+</script>
+</body>
+</html>

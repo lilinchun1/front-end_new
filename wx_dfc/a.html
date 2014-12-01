@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<link  href="http://115.28.104.209/apps/WindMill/_static/css/style.css" type="text/css" rel="stylesheet" />
+ <style>
+        .body-wrap{ position: relative; margin: 0 auto; width: 1024px; height:768px;
+            background: url(img/dfc_bg.jpg) 0 0 no-repeat; overflow: hidden;}
+        .main_right{ width: 50%;
+            margin-top: 115px;}
+        .main_right ul{margin: 0;}
+        .ad-left{
+            float: left;
+            margin: 64px 0 0 17px;
+            width: 470px;
+            height: 670px;}
+        .slider-wrap{ position: absolute; top: 50px; left: 0; z-index: 99; width: 50%; overflow: hidden;}
+    </style>
+    <link href="http://115.28.104.209/apps/WindMill/_static/css/sevenslider.css" rel="stylesheet" />
+    <link href="http://115.28.104.209/apps/WindMill/_static/css/skins/ios7.css" rel="stylesheet" />
+
+<!--<script src="http://115.28.104.209/apps/WindMill/_static/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="http://115.28.104.209/apps/WindMill/_static/js/jquery.seven.min.js"></script>
+<script src="http://115.28.104.209/apps/WindMill/_static/js/jquery.reference.js"></script>-->
+<!--<script type="text/javascript" language="javascript">
+    $(document).ready(function(){
+        var tb=$(".seven_container").superseven({
+            width:512,
+            height:620,
+            autoplay:true,
+            interval:5,
+            fullwidth:false,
+            responsive:true,
+            progressbar:true,
+            swipe:true,
+            keyboard:true,
+            scrollmode:false,
+            animation:0,
+            navtype:true,
+            repeat_mode:true,
+            skin:'ios7',
+            lightbox:false,
+            pause_on_hover:true
+        });
+    });
+</script>-->
+
+<script type="text/javascript">
+$(function(){
+
+//摇一摇开始动
+getSocket();
+
+
+});
+</script>
+
+</head>
+<script>
+var isOver = 0;
+var maxTime = 5000;
+var sendtime = 2000;//请求服务器频率
+var uid = 214;
+
+function getSocket(){
+    //console.log("ajax.start");
+   // maxTime = maxTime - (sendtime/1000);
+	$.ajax({
+		type:"POST",
+		dataType:"json",
+		url:"http://115.28.104.209/index.php?app=WindMill&mod=Settings&act=getWindMillJson",
+		timeout:80000,     //ajax请求超时时间80秒
+		data:{'uid':uid}, //40秒后无论结果服务器都返回数据
+		success:function(data,textStatus){
+		//从服务器得到数据，显示数据并继续查询
+		if(data.success=="1"){
+			var html = '';
+			var flag = 0;
+			var len = data.list.length;
+			console.log(data);
+			var haveNoNum=0;
+			for(var i=0;i<len;i++){
+				flag++;
+				haveNoNum=data.list[0]['windmillnum'];
+				if(maxTime <= haveNoNum){
+					isOver = 1;
+				}
+				//console.log(data.list[i]['headimgurl']);
+
+				if(data.list[i]['nickname'] == null || data.list[i]['nickname'] ==''){
+					data.list[i]['nickname'] = "无名氏";
+				}
+
+				if(data.list[i]['headimgurl'] == null || data.list[i]['headimgurl'] ==''){
+					data.list[i]['headimgurl'] = "http://115.28.104.209/apps/WindMill/_static/images/tx1.jpg";
+				}
+				var phoneNum = data.list[i]['phone'];
+				phoneNum=phoneNum.substring(0,3)+"****"+phoneNum.substring(7,11);
+				var nickname = data.list[i]['nickname'];
+				nickname = nickname.substring(0,6);
+				html +='<li><div class="jb"><img src="http://115.28.104.209/apps/WindMill/_static/images/'+flag+'.png"/></div><div class="photo"><img src="'+data.list[i]['headimgurl']+'" /></div> <div style="position:absolute; margin-left:70px;"></div><div class="xx"><div class="xx_name">'+nickname+'</div><div class="xx_num">'+phoneNum+'</div></div><div class="saidao" ><img style="margin-left:'+(data.list[i]['windmillnum']/maxTime*220)+'px;" src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /></div></li>';
+			}
+
+			if(haveNoNum > 0){
+			$(".main_right ul").html(html);
+			}
+
+
+
+			if(isOver==0){
+				setTimeout("getSocket()",sendtime);
+			}
+
+			if(isOver==1){
+				//将结束值存在缓存中
+				
+			$.getJSON('http://115.28.104.209/index.php?app=WindMill&mod=Settings&act=gameOver',{'uid':uid},function(res){
+			if(res.status){
+				//game is over
+				window.location.href ="http://115.28.104.209/index.php?app=WindMill&mod=Settings&act=gameEnd";
+			}
+		});
+				
+				//将结束值存在缓存中 end
+	
+			//$(".gameover").show();
+
+			}
+		}else if(data.success=="2"){
+			//game is over
+			window.location.href ="http://115.28.104.209/index.php?app=WindMill&mod=Settings&act=gameEnd";
+		}
+
+		//未从服务器得到数据，继续查询
+		if(data.success=="0"){
+                //$("#tagscloud a:eq("+i+")").html("<span class='tagc"+c+"'>[易享新魅力]</span>");
+                //setTimeout("getSocket()",10000);
+            }
+		},
+		//Ajax请求超时，继续查询
+		error:function(XMLHttpRequest,textStatus,errorThrown){
+            //getSocket();
+			if(textStatus=="timeout"){
+				//$("#tagscloud a:eq("+i+")").html("<span class='tagc"+c+"'>[易享新魅力]</span>");
+				//setTimeout("getSocket()",10000);
+			}
+		}
+	});
+}
+</script>
+<body>
+<div class="body-wrap">
+<!-- <div class="slider-wrap">
+        <div class="seven_container">
+            <div id="seven_viewport" class="seven_viewport">
+                <div class="seven_slider">
+                    <div class="seven_slide" image-src="http://115.28.104.209/apps/WindMill/_static/images/left1.png"></div>
+                    <div class="seven_slide" image-src="http://115.28.104.209/apps/WindMill/_static/images/left2.png"></div>
+                    <div class="seven_slide" image-src="http://115.28.104.209/apps/WindMill/_static/images/left3.png"></div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="ad-left">
+        <img src="img/ad1.jpg" alt=""/>
+    </div>
+<div id="page" style="display: none_;">
+
+  <div class="main_right">
+    <ul>
+      <li>
+        <div class="jb"> <img src="http://115.28.104.209/apps/WindMill/_static/images/1.png" /> </div>
+        <div class="photo"> <img src="" /> </div>
+		 <div style="position:absolute; margin-left:70px;"></div>
+        <div class="xx">
+          <div class="xx_name"></div>
+          <div class="xx_num"></div>
+        </div>
+        <div class="saidao"> <img src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /> </div>
+      </li>
+
+       <li>
+        <div class="jb"> <img src="http://115.28.104.209/apps/WindMill/_static/images/2.png" /> </div>
+        <div class="photo"> <img src="" /> </div>
+		<div style="position:absolute; margin-left:70px;"></div>
+        <div class="xx">
+          <div class="xx_name"></div>
+          <div class="xx_num"></div>
+        </div>
+        <div class="saidao"> <img src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /> </div>
+      </li>
+
+
+
+       <li>
+        <div class="jb"> <img src="http://115.28.104.209/apps/WindMill/_static/images/3.png" /> </div>
+        <div class="photo"> <img src="" /> </div>
+		<div style="position:absolute; margin-left:70px;"></div>
+        <div class="xx">
+          <div class="xx_name"></div>
+          <div class="xx_num"></div>
+        </div>
+        <div class="saidao"> <img src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /> </div>
+
+      </li>
+
+       <li>
+        <div class="jb"> <img src="http://115.28.104.209/apps/WindMill/_static/images/4.png" /> </div>
+        <div class="photo"> <img src="" /> </div>
+		<div style="position:absolute; margin-left:70px;"></div>
+        <div class="xx">
+          <div class="xx_name"></div>
+          <div class="xx_num"></div>
+        </div>
+        <div class="saidao"> <img src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /> </div>
+
+      </li>
+
+       <li>
+        <div class="jb"> <img src="http://115.28.104.209/apps/WindMill/_static/images/5.png" /> </div>
+        <div class="photo"> <img src="" /> </div>
+		<div style="position:absolute; margin-left:70px;"></div>
+        <div class="xx">
+          <div class="xx_name"></div>
+          <div class="xx_num"></div>
+        </div>
+        <div class="saidao"> <img src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /> </div>
+      </li>
+
+       <li>
+        <div class="jb"> <img src="http://115.28.104.209/apps/WindMill/_static/images/6.png" /> </div>
+        <div class="photo"> <img src="" /> </div>
+		<div style="position:absolute; margin-left:70px;"></div>
+        <div class="xx">
+          <div class="xx_name"></div>
+          <div class="xx_num"></div>
+        </div>
+        <div class="saidao"> <img src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /> </div>
+      </li>
+
+       <li>
+        <div class="jb"> <img src="http://115.28.104.209/apps/WindMill/_static/images/7.png" /> </div>
+        <div class="photo"> <img src="" /> </div>
+		<div style="position:absolute; margin-left:70px;"></div>
+        <div class="xx">
+          <div class="xx_name"></div>
+          <div class="xx_num"></div>
+        </div>
+        <div class="saidao"> <img src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /> </div>
+      </li>
+
+       <li>
+        <div class="jb"> <img src="http://115.28.104.209/apps/WindMill/_static/images/8.png" /> </div>
+        <div class="photo"> <img src="" /> </div>
+		<div style="position:absolute; margin-left:70px;"></div>
+        <div class="xx">
+          <div class="xx_name"></div>
+          <div class="xx_num"></div>
+        </div>
+        <div class="saidao"> <img src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /> </div>
+      </li>
+
+       <li>
+        <div class="jb"> <img src="http://115.28.104.209/apps/WindMill/_static/images/9.png" /> </div>
+        <div class="photo"> <img src="" /> </div>
+		<div style="position:absolute; margin-left:70px;"></div>
+        <div class="xx">
+          <div class="xx_name"></div>
+          <div class="xx_num"></div>
+        </div>
+        <div class="saidao"> <img src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /> </div>
+      </li>
+
+       <li>
+        <div class="jb"> <img src="http://115.28.104.209/apps/WindMill/_static/images/10.png" /> </div>
+        <div class="photo"> <img src="" /> </div>
+		<div style="position:absolute; margin-left:70px;"></div>
+        <div class="xx">
+          <div class="xx_name"></div>
+          <div class="xx_num"></div>
+        </div>
+        <div class="saidao"> <img src="http://115.28.104.209/apps/WindMill/_static/images/ball.gif" /> </div>
+      </li>
+
+    </ul>
+  </div>
+</div>
+</div>
+
+
+
+</body>
+</html>

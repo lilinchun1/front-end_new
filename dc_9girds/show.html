@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奖品页</title>
+    <link rel="stylesheet" href="css/show.css"/>
+</head>
+<body>
+    <div class="wrap">
+        <div class="house">
+            <img src="img/h0.jpg" alt=""/>
+        </div>
+        <p class="prize">
+            恭喜您！获得5000抵10000置业基金
+        </p>
+        <p id="J_code" class="code">
+            兑换码：jpc1287jitr45zoo90
+        </p>
+
+    </div>
+
+    <div class="overlay" id="J_overlay"></div>
+    <div class="modal" id="con1">
+    <div class="sn-pic">
+        <img src="img/2.jpg" alt=""/>
+    </div>
+    <p>
+        sn:1jpc1287jitr45zoo90
+    </p>
+</div>
+    <script>
+        window.onload =function () {
+            var btn_text = document.getElementById("J_code");
+            var overlay = document.getElementById("J_overlay");
+            var con1 = document.getElementById("con1");
+            btn_text.onclick = function () {
+                var scrolltop = document.documentElement.scrollTop ||document.body.scrollTop;
+                overlay.style.display = "block";
+                con1.style.display = "block";
+                overlay.style.height = document.body.clientHeight +scrolltop+'px';
+            };
+            overlay.onclick = function () {
+                overlay.style.display = "none";
+                con1.style.display = "none";
+            };
+        }
+    </script>
+</body>
+</html>

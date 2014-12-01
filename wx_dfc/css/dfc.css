@@ -1,0 +1,51 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;}
+
+body{
+    background: #c80f07;
+}
+img{
+    width: 100%;
+    min-width: 100%;}
+.logo{
+    margin: 10% auto;
+    width: 60%;
+}
+.fc-pic{
+    position: relative;
+    margin: 10% auto;
+    width: 80%;}
+.fc-pic1{
+    width: 50%;
+}
+.fc-pic2{
+    width: 100%;
+}
+.fc-pic img{
+    position: relative;
+    z-index: 2;}
+.text{
+    position: relative;
+    top: 20px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1em;
+    font-family: "Microsoft YaHei";
+}
+.line{
+    position: absolute;
+    z-index: 1;
+    top: 60%;
+    left: 50%;
+    width: 15px;
+    height: 70%;
+    background: #804f2a;
+}
+h3{
+    font-size: 1em;
+    font-family: "黑体";
+    color: #ffffff;
+    text-align: center;
+}

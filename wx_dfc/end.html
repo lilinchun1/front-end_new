@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>游戏结束</title>
+    <style>
+        body{
+            background: #c80f07;}
+        .body-wrap{
+            margin: 0 auto;
+            width: 1024px;
+            height: 768px;
+            overflow: hidden;
+            background: url(img/end_bg.jpg) 0 0 no-repeat;}
+        #page .jg_box{
+            margin-top: 120px;
+            width: 50%;
+            float: right;}
+        #page .jg_box li{
+            width: 94%;
+            margin-left: 0;}
+        #page .jg_box_bg img{
+            margin-left: 10px;
+            float: left;}
+    </style>
+<script src="http://115.28.104.209/apps/WindMill/_static/js/71.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://115.28.104.209/apps/WindMill/_static/js/bgstretcher.js"></script>
+<link  href="http://115.28.104.209/apps/WindMill/_static/css/style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+$(function(){
+
+	   //背景
+      //  Initialize Backgound Stretcher
+		$('BODY').bgStretcher({
+			//images: ['http://115.28.104.209/apps/WindMill/_static/images/bg1.jpg'],
+			imageWidth: 1024,
+			imageHeight: 768,
+			slideDirection: 'N',
+
+			transitionEffect: 'fade',
+			sequenceMode: 'normal',
+
+			pagination: '#nav',
+			anchoring: 'left center',
+			anchoringImg: 'left center'
+		});
+
+//背景结束
+
+getSocket();
+
+});
+</script>
+
+</head>
+<script>
+
+function getSocket(){
+    //console.log("ajax.start");
+	$.ajax({
+		type:"POST",
+		dataType:"json",
+		url:"http://115.28.104.209/index.php?app=WindMill&mod=Settings&act=getWindMillJsonend",
+		timeout:80000,     //ajax请求超时时间80秒
+		data:{'':''}, //40秒后无论结果服务器都返回数据
+		success:function(data,textStatus){
+		//从服务器得到数据，显示数据并继续查询
+		if(data.success=="1"){
+			var html = '';
+			var flag = 0;
+			console.log(data);
+			var len = data.list.length;
+			//var haveNoNum=0;
+			for(var i=0;i<len;i++){
+				flag++;
+				//html +='<li><div class="horse_num'+flag+'"> <img src="'+data.list[i]['headimgurl']+'" /><div class="horse_text"><p>'+data.list[i]['nickname']+'</p><p>'+data.list[i]['phone']+'</p></div></div><div class="sd" > <img style="padding-left:'+(data.list[i]['windmillnum']/maxVal*550)+'px;" src="http://115.28.104.209/apps/WindMill/_static/images/horse.gif" /></div></li>';
+				//console.log(data.list[i]['headimgurl']);
+				if(data.list[i]['nickname'] == null || data.list[i]['nickname'] ==''){
+					data.list[i]['nickname'] = "无名氏";
+				}
+
+				if(data.list[i]['headimgurl'] == null || data.list[i]['headimgurl'] ==''){
+					data.list[i]['headimgurl'] = "http://115.28.104.209/apps/WindMill/_static/images/tx1.jpg";
+				}
+				var nickname = data.list[i]['nickname'];
+				nickname = nickname.substring(0,5);
+				$("#num"+flag+" img").attr("src",data.list[i]['headimgurl']);
+				$("#name"+flag).html(nickname);
+				$("#windmillnum"+flag).html(data.list[i]['windmillnum']);
+			}
+
+		}
+
+		//未从服务器得到数据，继续查询
+		if(data.success=="0"){
+                //$("#tagscloud a:eq("+i+")").html("<span class='tagc"+c+"'>[易享新魅力]</span>");
+                //setTimeout("getSocket()",10000);
+            }
+		},
+		//Ajax请求超时，继续查询
+		error:function(XMLHttpRequest,textStatus,errorThrown){
+            //getSocket();
+			if(textStatus=="timeout"){
+				//$("#tagscloud a:eq("+i+")").html("<span class='tagc"+c+"'>[易享新魅力]</span>");
+				//setTimeout("getSocket()",10000);
+			}
+		}
+	});
+}
+
+</script>
+<body>
+<div class="body-wrap">
+    <div id="page" style="display: none_;">
+
+        <ul class="jg_box">
+            <!--<li>
+                <div> <img src="http://115.28.104.209/apps/WindMill/_static/images/s_1.png" /> </div>
+                <div> <img src="http://115.28.104.209/apps/WindMill/_static/images/s_2.png" /> </div>
+                <div> <img src="http://115.28.104.209/apps/WindMill/_static/images/s_3.png" /> </div>
+                <div> <img src="http://115.28.104.209/apps/WindMill/_static/images/s_4.png" /> </div>
+            </li>-->
+            <li class="jg_box_bg">
+                <div><img src="http://115.28.104.209/apps/WindMill/_static/images/1.png" /> </div>
+                <div id="num1"><img src="" /></div>
+                <div id="name1"></div>
+                <div id="windmillnum1"></div>
+            </li>
+            <li class="jg_box_bg">
+                <div><img src="http://115.28.104.209/apps/WindMill/_static/images/2.png" /> </div>
+                <div id="num2"><img src="" /></div>
+                <div id="name2"></div>
+                <div id="windmillnum2"></div>
+            </li>
+            <li class="jg_box_bg">
+                <div><img src="http://115.28.104.209/apps/WindMill/_static/images/3.png" /> </div>
+                <div id="num3"><img src="" /></div>
+                <div id="name3"></div>
+                <div id="windmillnum3"></div>
+            </li>
+            <li class="jg_box_bg">
+                <div><img src="http://115.28.104.209/apps/WindMill/_static/images/4.png" /> </div>
+                <div id="num4"><img src="" /></div>
+                <div id="name4"></div>
+                <div id="windmillnum4"></div>
+            </li>
+            <li class="jg_box_bg">
+                <div><img src="http://115.28.104.209/apps/WindMill/_static/images/5.png" /> </div>
+                <div id="num5"><img src="" /></div>
+                <div id="name5"></div>
+                <div id="windmillnum5"></div>
+            </li>
+            <li class="jg_box_bg">
+                <div><img src="http://115.28.104.209/apps/WindMill/_static/images/6.png" /> </div>
+                <div id="num6"><img src="" /></div>
+                <div id="name6"></div>
+                <div id="windmillnum6"></div>
+            </li>
+            <li class="jg_box_bg">
+                <div><img src="http://115.28.104.209/apps/WindMill/_static/images/7.png" /> </div>
+                <div id="num7"><img src="" /></div>
+                <div id="name7"></div>
+                <div id="windmillnum7"></div>
+            </li>
+            <li class="jg_box_bg">
+                <div><img src="http://115.28.104.209/apps/WindMill/_static/images/8.png" /> </div>
+                <div id="num8"><img src="" /></div>
+                <div id="name8"></div>
+                <div id="windmillnum8"></div>
+            </li>
+            <li class="jg_box_bg">
+                <div><img src="http://115.28.104.209/apps/WindMill/_static/images/9.png" /> </div>
+                <div id="num9"><img src="" /></div>
+                <div id="name9"></div>
+                <div id="windmillnum9"></div>
+            </li>
+            <li class="jg_box_bg">
+                <div><img src="http://115.28.104.209/apps/WindMill/_static/images/10.png" /> </div>
+                <div id="num10"><img src="" /></div>
+                <div id="name10"></div>
+                <div id="windmillnum10"></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

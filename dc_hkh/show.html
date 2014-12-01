@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+			<meta content="telephone=no" name="format-detection">
+				<title>大连大华·华客惠</title>		
+<style>
+.hhhh{ position:fixed; top:-80px; left:5%; z-index:9999; width: 90%; padding: 15px 0px; background-color: #ff5f6e; border: 1px solid #b10000; margin: auto; border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px; box-shadow: 0px 0px 2px #999999; -ms-box-shadow: 0px 0px 2px #999999; -webkit-box-shadow: 0px 0px 2px #999999; -moz-box-shadow: 0px 0px 2px #999999; -o-box-shadow: 0px 0px 2px #999999; margin-top: 20px; color: #fff; font-size: 14px; font-weight: bold; text-align: center; border: 2px solid #fff; }
+.img{width:90%; margin:0 auto;margin-top:3%; margin-bottom:2%;}
+.img img{width:100%; border-radius:7px;}
+</style>
+<script src="__PUBLIC__/js/jquery-1.8.0.min.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.3.min176ed4.js"></script>
+<script src="__PUBLIC__/js/show.js"></script>
+<script type="text/javascript" >
+
+	var page = {$nowPage};
+	var pagecount = {$totalPages};
+	$(function() {
+		if(pagecount<2){
+			$('.host_but').hide();
+		}
+	});
+	
+var load_more_info = function(){
+	var url = "{:U('Home/Index/more_show')}";	
+	$('.host_but').hide();
+	$.getJSON(url, {'p':++page}, function (data) {
+		$.each(data,function(key,val){
+			var status = val['bstate'];
+			var type  =val['type'];
+			var b = innerH(status,type);
+			var a='';
+			if(type==1){
+				a='<div class="rigth"><div class="apply green">审核中..</div></div>';
+			}else if(type==2){
+				a='<div class="rigth"><a data-toggle="modal" href="#myApply" ><input type="button" value="领取奖励" class="apply red"  /></a>';
+			}else if(type==3){
+			}
+			else if(status==2){
+				a='<div class="rigth" ><a data-toggle="modal" href="javascript:show_apply('+val['xid']+',&quot;'+val['xname']+'&quot;,&quot;'+val['xtel']+'&quot;,&quot;'+val['area']+'&quot;,&quot;'+val['price']+'&quot;,&quot;'+val['whouse']+'&quot;);"> <input type="button"  value="申请领奖" class="apply_1 red"  /></a></div>';
+			}
+			b=b+a;
+			if(type==3){
+				var c ='<li style="height:100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>状态：领过奖励</b></li>';
+				var itemHtml = '<li><div class="green host_box" ><div class="arrow-left"></div></div><div><b>'+val['xname']+'</b><b>'+val['xtel']+'</b>'+b+'</div><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'+val['area']+'</b><b>'+val['price']+'</b></li><li style="height:100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'+val['whouse']+'</b></li>'+c+'</li>';
+			}else{
+				var itemHtml = '<li><div class="green host_box" ><div class="arrow-left"></div></div><div><b>'+val['xname']+'</b><b>'+val['xtel']+'</b>'+b+'</div><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'+val['area']+'</b><b>'+val['price']+'</b></li><li style="height:100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'+val['whouse']+'</b>';
+			}
+			$('.friends').append(itemHtml);
+		});
+		if(page+1 < pagecount){
+     		$('.host_but').show();
+	    }
+		});
+	};
+	
+function apply_award(){
+	var url = "{:U('Home/Index/add_award_apply')}";	
+	var xid=$("#xid").val();
+	 $.getJSON(url, {'xid':xid}, function (data) {
+		if(data.status==0){
+			show_message("申请失败，请重试");
+		}else{
+			window.location.reload();
+			//show_message("申请成功");
+		}
+	}); 
+}
+/**
+ * 弹出推荐人信息内容
+ */ 
+function show_apply(xid,xname,xtel,area,price,whouse){
+	
+	var itemHtml = '<input type="hidden" value="'+xid+'" id="xid"/> 姓名：'+xname+'<br/>  联系电话：'+xtel+'<br />意向面积：'+area+'<br />意向价位：'+price+'<br />意向楼盘：'+whouse+'<br />';
+
+	$('.modal_text_nr').html(itemHtml);
+	$("#myModal").modal('show');
+}
+
+function checkStatus(owner,status){
+	if(status==1||owner==0){
+		window.location="{:U('Home/Index/recommend')}";
+	}else{
+		show_message("您还没通过审核，暂时无法推荐用户");
+	}
+}
+
+
+</script>
+<link href="css/style_2.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="hhhh"></div>
+	<!--header，微信头像和昵称信息-->
+	<div class="header">
+	<div class="header_left">
+    	<img src="{$infoM.heading}" />
+    </div>
+    <ul class="header_right">
+    	<li><span>昵称：</span>{$infoM.nickname}</li>
+    	<if condition="$infoM.owner eq 1">
+    	<li><span>状态：</span>
+    	<if condition="$infoM.status eq 0">审核中
+    	<elseif condition="$infoM.status eq 2"/>审核未通过<else/> 
+    	<li>推荐成功人数：{$count.num}人</li>
+        <li>红包金额：{$count.money}元</li></if>
+    	</li><else/>
+    	<li>推荐成功人数：{$count.num}人</li>
+        <li>红包金额：{$count.money}元</li></if>
+    </ul>
+</div>
+	<!--导航按钮-->
+	<div class="nav">
+	<!-- 推荐客户开始 -->
+		<div class="nav_box">
+			<div class="nav_box_2">
+				<a href="javascript:checkStatus({$infoM.owner},{$infoM.status});">推荐客户</a>
+			</div>
+		</div>
+		<!-- 推荐客户结束-->
+		<!-- 规则说明开始 -->
+		<div class="nav_box_1">
+			<div class="nav_box_2">
+					<a href='__URL__/rule.html'>规则说明</a>
+			</div>
+		</div>
+      <!-- 规则说明结束 -->
+	</div>
+<div class="nav">
+	<!-- 推荐客户开始 -->
+	<div class="nav_box-0">
+		<div class="nav_box_2">
+			<a href="rule0.html">最新活动</a>
+		</div>
+	</div>
+	<!-- 推荐客户结束-->
+	<!-- 规则说明开始 -->
+	<div class="nav_box-1">
+		<div class="nav_box_2">
+			<a href="#">推荐排行榜</a>
+		</div>
+	</div>
+	<!-- 规则说明结束 -->
+</div>
+	
+	<!--最新资讯-->
+<!--<div class="main_news" style=" background:#f6f5f5 url(../images/line1.jpg) bottom repeat-x; display:block; overflow:hidden;width:100%; color:#0F3; padding:10px 0;">
+<a href="">最新消息<span>(3)</span></a>
+</div>-->
+
+<if condition="$infoM.status eq 0">
+	 <div class="img">
+    	<a href="http://dc.exweixin.com/dc/dh/sanhao/1/user.html">
+    	<img src="__PUBLIC__/images/img_banner.jpg" style="background-color:#da3c3c;width:100%;margin:0px;padding:0px;text-align:center;font-family: 'Microsoft YaHei', 微软雅黑, Arial, Lucida Grande, Tahoma, sans-serif; font-size:18px;color:#666;"/>
+    	</a>
+    </div>
+ <else/>
+<!--  <if condition="$jud eq true">
+ <div class="host_list" style="">
+ 	<h2>大连大华祝你生日快乐！</h2>
+ </div>
+ </if> -->
+ <div class="host_list" style="">
+		<h3>推荐记录</h3>
+		<ul><div class="friends">
+		<volist name="customer" id="vo">
+		<li><div class="green host_box" >
+				<div class="arrow-left"></div>
+			</div>
+			<div id="state"><b>{$vo.xname}</b><b>{$vo.xtel}</b>
+				<if condition="$vo.bstate eq 0"><span class="sh" style="color:#fff;">审核中</span><elseif condition="$vo.bstate eq 5"/><span class="sh5" style="color:#fff;">审核通过</span><elseif condition="$vo.bstate eq 1"/><span class="sh1" style="color:#fff;">带看中</span><elseif condition="$vo.bstate eq 2"/><span class="sh2" style="color:#fff;">已成交</span><elseif condition="$vo.bstate eq 3"/><span class="sh3" style="color:#fff;">已推荐</span><else/><span class="sh3" style="color:#fff;">为已成交客户</span></if>
+	              <div class="rigth" >
+	            <if condition="$vo.type eq 1">
+	            	<div class="apply_1 green">审核</div>	
+                <elseif condition="$vo.type eq 2"/>
+                	 <a data-toggle="modal" href="#myApply">    
+                      <input type="button"  value="领取奖励" class="apply red" /></a>
+                 <elseif condition="$vo.type eq 3"/>
+                <elseif condition="$vo.bstate eq 2"/>
+                     <a data-toggle="modal" href="javascript:show_apply({$vo.xid},'{$vo.xname}','{$vo.xtel}','{$vo.area}','{$vo.price}','{$vo.whouse}');"> 
+                  	<input type="button"  value="申请领奖" class="apply red" /></a>
+                </if>	  
+                 	 </div>
+                 </div>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<b>{$vo.area}</b><b>{$vo.price}</b></li>
+				<li style="height:100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<b>{$vo.whouse}</b></li>
+				<if condition="$vo.type eq 3"> 
+					<li style="height:100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<b>状态：奖金已领取</b></li>
+				</if>
+			</li></volist>
+		</div>
+			<li class="host_but">	
+			<a  href="javascript:load_more_info()"/>加载更多</a>
+			</li>
+		</ul>	
+	</div>
+</if>
+	<div class="pop"></div>
+	<div style="margin-top:3%; color:#c03; font-size:12px; text-align:center;">易享科技·技术支持</div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">申请奖励</h4>
+              <div class="top"></div>
+            </div>
+            <div class="modal_text">
+            <h5>请确认一下信息：</h5>
+            <div class="modal_text_nr">
+			     
+            </div>
+            <input  value="确认"  type="button" class="nr_but1" onclick="apply_award();"/>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
+    <!-- Apply -->
+    <div class="modal fade" id="myApply" tabindex="20" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">奖励说明</h4>
+              <div class="top"></div>
+            </div>
+            <div class="modal_text">
+            <h5>请确认一下信息：</h5>
+            <div class="modal_text">
+         		请到大华售楼处领取加油卡<br />
+           		   联系电话：15942893946<br />
+            </div>
+            <input  value="确认"  type="button" class="nr_but1" data-dismiss="modal" aria-hidden="true"/>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/js/theme.js"></script>  
+</body>
+</html>

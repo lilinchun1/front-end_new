@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html style="-webkit-overflow-scrolling: touch;">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/dfc.css"/>
+</head>
+<body>
+    <div class="logo">
+        <img src="img/logo1.png" alt=""/>
+    </div>
+    <div class="fc-pic fc-pic1">
+        <img id="turbine" src="img/dfc2.png">
+        <!--<div class="line"></div>-->
+    </div>
+    <h3>活动时间：10月10日-13日每天上午10:00</h3>
+    <p class="text">易享科技出品</p>
+    <input type="text" value="" id="J_input" style="position:relative; top: 40px;"/>
+    <input type="text" value="" id="J_input2" style="position:relative;top: 40px;"/>
+<script src="js/propeller.js"></script>
+<script>
+    var long = 0;
+    var oInput = document.getElementById('J_input');
+    var oInput2 = document.getElementById('J_input2');
+    new Propeller(document.getElementById('turbine'), {
+        inertia: 0.89,
+        onRotate: function () {
+            long += Math.abs(this.speed);
+            /*console.log(long, long%360, this.speed);*/
+            oInput.value = long;
+        }
+
+    });
+    setInterval(function () {
+        oInput2.value = oInput.value;
+    },1000);
+    /*去掉iphone手机滑动默认行为*/
+    $('body').on('touchmove', function (event) {
+        event.preventDefault();
+    });
+</script>
+</body>
+</html>

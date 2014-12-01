@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection">
+<title>华客惠</title>
+<link href="../css/style.css" rel="stylesheet">
+<script src="__PUBLIC__/js/jquery-1.8.0.min.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.3.min176ed4.js"></script>
+<script type="text/javascript">
+	function show_qr() {
+		$display = document.getElementById('qr_code').style.display;
+		if ($display == 'none' || $display == "") {
+			document.getElementById('qr_code').style.display = 'block';
+		} else {
+			document.getElementById('qr_code').style.display = 'none';
+		}
+		scroll(0, 9999);
+	}
+	function dialog_wx_close() {
+		document.getElementById('dialog_wx').style.display = 'none';
+	}
+	function dialog_wx_open($value, $type) {
+		if ($type == 1) {
+			document.getElementById('main_info').innerHTML = $value;
+			document.getElementById('tips_info').innerHTML = '';
+			document.getElementById('dialog_wx').style.display = 'block';
+		} else if ($type == 2) {/*document.getElementById('main_info').innerHTML="http://cli.im/vas/"+$value;document.getElementById('tips_info').innerHTML='微信限制文件下载，保存请用浏览器打开:';document.getElementById('dialog_wx').style.display='block';*/
+			document.getElementById('main_info').style.margin = '0px';
+			document.getElementById('tips_info').style.lineHeight = '1.7';
+			document.getElementById('tips_info').style.marginBottom = '0.5em';
+			document.getElementById('tips_info').innerHTML = "<img src='images/go.png' style='width:2.5em;vertical-align: middle;' />";
+			document.getElementById('dialog_wx').style.display = 'block';
+		}
+	}
+</script>
+</head>
+<body>
+
+	<div class="agent_apply" style="margin-top: 10px">
+		<h3>系统提示</h3>
+		<div class="prompt_box"
+			style="font-size: 16px; line-height: 150%; text-align: left; margin: 10px;">
+			<p>活动规则</p>
+
+			<p>活动名称：	华客惠</p>
+			<p>活动时间：	2014-07-25~2014-08-30</p>
+			<p>奖励规则：	。。。。。。。。。</p>
+		<p>新客户界定：以我项目明源系统登记为准，如推荐人推荐的客户在明源系统中已有登记，则不属于新客户；如明源系统中无信息记录的到访客户即为新客户。</p>
+			<p>如被推荐的客户，成功购买大华锦绣华城在售产品，且按公司规定比例付清首付款并签订《商品房买卖合同》，推荐人方可微信申请获得老带新奖励；待公司核准批复后，推荐人可凭微信“推荐清单”到大华锦绣华城项目领取相应奖励。</p>
+			<p>大华业主每成功推荐一位新客户购买，可活动推荐奖励为1000元加油卡或锦绣华城商街商家等值购物券。</p>
+			<p>非业主每成功推荐一位新客户购买，可活动推荐奖励为500元加油卡或锦绣华城商街商家等值购物券。</p>
+			<p>微信账号是识别推荐人身份的标准，温馨提示您要严格管理微信账号，如因推荐人的账号丢失导致奖励纠纷，由推荐人自行承担。</p>
+			<p>本活动最终解释权，归大华集团大连置业有限公司所有。</p>
+		</div>
+
+		<div class="agent_apply_sb">
+			<input type="button" value="我知道了" class="agent_but agent_apply_style" onclick="location.href='__URL__/show.html'">
+		</div>
+
+	</div>
+	<div class="footer1">易享科技出品</div>
+</body>
+</html>
+

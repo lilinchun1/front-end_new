@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+			<meta content="telephone=no" name="format-detection">
+				<title>大连大华·华客惠</title>
+				
+<script src="__PUBLIC__/js/jquery-1.8.0.min.js"></script>
+<script src="__PUBLIC__/js/jquery-1.8.3.min176ed4.js"></script>
+
+<script>
+			
+	var page = {$nowPage};
+	var pagecount = {$totalPages};
+	$(function() {
+		if(pagecount<2){
+			$('.host_but').hide();
+		}
+	});
+				
+	var url = "{:U('Home/Index/more_show')}";		
+	var load_more_info = function(){
+					
+		$('.host_but').hide();
+		$.getJSON(url, {'p':++page}, function (data) {
+			$.each(data,function(key,val){
+				var b = "";
+				var status = val['bstate'];
+				if(status == 0){
+					b = '<span class="sh" style="color:#fff;">审核中</span>';
+				}else if(status==5){
+					b='<span class="sh5" style="color:#fff;">审核通过</span>';
+				}else if(status==1){
+					b='<span class="sh1" style="color:#fff;">带看中</span>';
+				}else if(status==2){
+					b='<span class="sh2" style="color:#fff;">已成交</span>';
+				}else if(status==3){
+					b='<span class="sh3" style="color:#fff;">已推荐</span>';
+				}else{
+					b='<span class="sh3" style="color:#fff;">为已成交客户</span>';
+				}
+					var itemHtml = '<li><div class="green host_box" ><div class="arrow-left"></div></div><div><b>'+val['xname']+'</b><b>'+val['xtel']+'</b>'+b+'</div><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'+val['area']+'</b><b>'+val['price']+'</b></li><li style="height:100%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'+val['whouse']+'</b></li></li>';
+					$('.friends').append(itemHtml);
+			});
+			if(page+1 < pagecount){
+				$('.host_but').show();
+			}
+		});
+	};
+	//检查状态	
+	function checkStatus(owner,status){
+		if(status==1||owner==0){
+			window.location="{:U('Home/Index/recommend')}";
+		}else{
+			show_message("您还没通过审核，暂时无法推荐用户");
+		}
+	}
+	//弹框提示
+	function show_message(msg){
+		$('.hhhh').html(msg);
+		$('.hhhh').animate({top:130},500,function(){
+			window.setTimeout("hide_message()",2000);
+		});
+	}
+	function hide_message(){
+		$('.hhhh').animate({top:-80},300);
+	}
+</script>
+<style>
+.hhhh{ position:fixed; top:-80px; left:5%; z-index:9999; width: 90%; padding: 15px 0px; background-color: #ff5f6e; border: 1px solid #b10000; margin: auto; border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; -ms-border-radius: 8px; -o-border-radius: 8px; box-shadow: 0px 0px 2px #999999; -ms-box-shadow: 0px 0px 2px #999999; -webkit-box-shadow: 0px 0px 2px #999999; -moz-box-shadow: 0px 0px 2px #999999; -o-box-shadow: 0px 0px 2px #999999; margin-top: 20px; color: #fff; font-size: 14px; font-weight: bold; text-align: center; border: 2px solid #fff; }
+.img{width:90%; margin:0 auto;margin-top:3%; margin-bottom:2%;}
+.img img{width:100%; border-radius:7px;}
+</style>
+<link href="__PUBLIC__/css/style_2.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="hhhh"></div>
+	<!--header，微信头像和昵称信息-->
+	<div class="header">
+	<div class="header_left">
+    	<img src="{$infoM.heading}" />
+    </div>
+    <ul class="header_right">
+    	<li><span>昵称：</span>{$infoM.nickname}</li>
+    	<if condition="$infoM.owner eq 1">
+    	<li><span>状态：</span>
+    	<if condition="$infoM.status eq 0">审核中
+    	<elseif condition="$infoM.status eq 2"/>审核未通过<else/>审核通过</if>
+    	</li><else/></if>
+    </ul>
+</div>
+	<!--导航按钮-->
+	<div class="nav">
+	<!-- 推荐客户开始 -->
+		<div class="nav_box">
+			<div class="nav_box_2">
+
+					<a href="javascript:checkStatus({$infoM.owner},{$infoM.status});">推荐客户</a>
+
+			</div>
+		</div>
+		<!-- 推荐客户结束-->
+		<!-- 规则说明开始 -->
+		<div class="nav_box_1">
+			<div class="nav_box_2">
+
+					<a href='__URL__/rule.html'>规则说明</a>
+
+			</div>
+		</div>
+      <!-- 规则说明结束 -->
+	</div>
+	<!--最新资讯-->
+	<!--<div class="main_news" style=" background:#f6f5f5 url(../images/line1.jpg) bottom repeat-x; display:block; overflow:hidden;width:100%; color:#0F3; padding:10px 0;">
+
+<a href="">最新消息<span>(3)</span></a>
+</div>-->
+<if condition="$infoM.status eq 0">
+	<div class="img">
+    	<a href="http://mp.weixin.qq.com/s?__biz=MjM5MDg2OTU4MA==&mid=201020060&idx=1&sn=fe835bd48ce3b6332778ae4b2df8ec4a#rd">
+    	<img src="__PUBLIC__/images/img_banner.jpg" style="background-color:#da3c3c;width:100%;margin:0px;padding:0px;text-align:center;font-family: 'Microsoft YaHei', 微软雅黑, Arial, Lucida Grande, Tahoma, sans-serif; font-size:18px;color:#666;"/>
+    	</a>
+    </div>
+ <else/>
+ <div class="host_list" style="">
+
+		<h3>推荐记录</h3>
+		<ul>
+		<div class="friends">
+		<volist name="customer" id="vo">
+		<li>
+				<div class="green host_box" >
+					<div class="arrow-left"></div>
+				</div>
+				<div><b>{$vo.xname}</b><b>{$vo.xtel}</b>
+				<if condition="$vo.bstate eq 0">
+				<span class="sh" style="color:#fff;">审核中</span>
+				<elseif condition="$vo.bstate eq 5"/>
+				<span class="sh5" style="color:#fff;">审核通过</span>
+				<elseif condition="$vo.bstate eq 1"/>
+				<span class="sh1" style="color:#fff;">带看中</span>
+				<elseif condition="$vo.bstate eq 2"/>
+				<span class="sh2" style="color:#fff;">已成交</span>
+				<elseif condition="$vo.bstate eq 3"/>
+				<span class="sh3" style="color:#fff;">已推荐</span>
+				<else/><span class="sh3" style="color:#fff;">为已成交客户</span></if>
+				</div>
+				<li>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<b>{$vo.area}</b><b>{$vo.price}</b>
+				</li>
+				<li style="height:100%;">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<b>{$vo.whouse}</b>
+				</li>
+			</li>	
+			</volist>
+		</div>
+			<li class="host_but">	
+			<a  href="javascript:load_more_info()"/>加载更多</a>
+			</li>
+		</ul>	
+	</div>
+</if>
+
+	<div class="pop"></div>
+	<div style="margin-top:3%; color:#c03; font-size:12px; text-align:center;">易享科技·技术支持</div>
+</body>
+</html>

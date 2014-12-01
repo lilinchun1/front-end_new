@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+body{background:url(../images/img_bodoy.png) no-repeat #f5f5f5 bottom; background-size:100%; margin:0; padding:0; font-family:"微软雅黑";}
+a{text-decoration:inherit;}
+.character{color:#da3c3c; width:90%; margin:0 auto;}
+.character h3{text-align:center;}
+.top{margin:0; padding:0 ; color:#333; width:90%; margin:0 auto;padding:5px;border-radius:3px;-moz-border-radius:3px;/* Gecko browsers */-webkit-border-radius:3px;/* Webkit browsers */;}
+.top_1{background-color:#fff; margin:0; padding:5px;border-radius:3px;-moz-border-radius:3px;/* Gecko browsers */ -webkit-border-radius:3px;   /* Webkit browsers */ background: none repeat scroll 0 0 rgba(255,255,255,0.8) !important; }
+.apply{width:85%; margin:0 auto;}
+.apply_1{line-height:30px; border:0; text-align:center; color:#da3c3c;  cursor:pointer; ext-align:left; padding-left:10px; width:98%; margin:0 auto; margin-top:3%; font-family:"方正中倩_GBK";background-color:#d6d6d6; text-align:center;color:#da3c3c; font-size:16px; cursor:pointer; border-bottom:2px #b3b3b3 solid;border-radius:3px;-moz-border-radius:3px;/* Gecko browsers */ -webkit-border-radius:3px;   /* Webkit browsers */ }
+
+

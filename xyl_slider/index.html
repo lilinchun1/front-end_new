@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>新玉麟-金手指</title>
+<link rel="stylesheet" type="text/css" href="css/style.source.css?v20141106">
+<script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/jquery-1.8.0.min.js"></script>
+<style>
+.m-loading {
+    height: 80px;
+    width: 80px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.m-loading span {
+    position: absolute;
+    content: '';
+    width: 80px;
+    height: 80px;
+    top: 0;
+    left: 0;
+    background: url(img/loading.png?v20141106) center no-repeat;
+    -webkit-background-size: 72px 72px;
+    background-size: 72px 72px;
+    -webkit-animation: loading 1s infinite linear;
+    z-index: 0;
+}
+
+.m-load-wrap {
+    position: absolute;
+    height: 130px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@-webkit-keyframes loading {
+    0% {
+        -webkit-transform: rotateZ(0);
+    }
+    100% {
+        -webkit-transform: rotateZ(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!--第一屏-->
+<div id="dow" style="position:absolute; z-index:2; width:100%; height:100%; background:#000;">
+    <form name="loading" class="m-load-wrap">
+        <p align="center">
+        <div class="m-loading">
+            <input type="text" name="bar" class="" style="border-style:none; background:transparent; width:80px; height:80px; font-weight:bold; color:#fff; text-align:center; line-height:80px; font-size:14px"/>
+            <span></span>
+        </div>
+        <input type="text" name="percentage" style=" display:none">
+        </p>
+        <p align="center" style="line-height:50px; font-size:14px; color: #fff;">正在下载，请稍后...</p>
+    </form>
+<script language="javascript" type="text/javascript">
+    var percent = 0;    //百分比进度
+    var sources = ["4.png","btn1.png","btn2.png","chang.png","first1.png","first2.png","first3.png","first4.png","first5.png","fu.png","jyl-logo.png","last-bg.png","libai.png","loading.png","logo.png","mop1.png","pic1.png","pic10.png","pic11.png","pic12.png","pic13.png","pic16.png","pic17.png","pic18.png","pic2.png","pic3.png","pic4.png","pic5.png","pic7.png","pic8.png","pic9.png","qiamin.png","sho1.png","sho6.png","shou.png","sign-4.png","sjx.png","xiandu.png","zfpc.png"];
+    var len = sources.length;
+    var loaded = 0;
+
+    function loadImg() {
+        var newImg, scalc;
+        for (var i = 0; i < len; i++) {
+            (function (index) {
+                newImg = new Image();
+                newImg.onload = function () {
+                    loaded++;
+                    scalc = Math.floor(loaded / len * 100) + '%';
+                    document.loading.bar.value = scalc;
+                    document.loading.percentage.value = scalc;
+                    if (loaded == len) {
+                        $('.bh').show();
+                        $('#dow').hide();
+                    }
+                }
+                newImg.src = 'http://eshareimg.qiniudn.com/wd/2014/newideas/img/' + sources[index] + '?v20141106';
+            })(i);
+        }
+    }
+    loadImg();                //开始调用循环
+</script>
+</div>
+<div class="bh firsts0 hover" style="display:none">
+    <div class="afirst"><img src="img/sho6.png?v20141106"/></div>
+    <div class="z-shou"><img src="img/sho1.png?v20141106"/></div>
+    <a class="index_link btn_down" index="0"></a>
+</div>
+<div class="bh firsts1 ace" style="display:none">
+    <div class="wrap-fir">
+        <div class="names"><img src="img/pic1.png?v20141106"/></div>
+        <div class="namesv"><img src="img/pic2.png?v20141106"/></div>
+        <div class="zfs"><img src="img/zfpc.png?v20141106"/></div>
+    </div>
+    <div class="z-na"><img src="img/pic3.png?v20141106"/></div>
+    <a class="index_link btn_down" index="1"></a>
+    <div class="jyl-logo"><img src="img/jyl-logo.png?v20141106"/></div>
+    <div class="logo"><img src="img/logo.png?v20141106"/></div>
+</div>
+<!--第二屏-->
+<div class="bh firsts2 ace" style="display:none">
+    <div class="wrap-fir">
+        <div class="names a-nan"><img src="img/pic9.png?v20141106"/></div>
+        <div class="namesv a-name"><img src="img/pic10.png?v20141106"/></div>
+        <div class="zfs a-ml"><img src="img/pic7.png?v20141106"/></div>
+    </div>
+    <div class="z-lis"><img src="img/pic8.png?v20141106"/></div>
+    <a class="index_link btn_down" index="2"></a>
+    <div class="jyl-logo"><img src="img/jyl-logo.png?v20141106"/></div>
+    <div class="logo"><img src="img/logo.png?v20141106"/></div>
+</div>
+<!--第三屏-->
+<div class="bh firsts3 ace" style="display:none">
+    <div class="wrap-fir">
+        <div class="names a-nann"><img src="img/pic12.png?v20141106"/></div>
+        <div class="namesv a-names height"><img src="img/pic13.png?v20141106"/></div>
+        <div class="zfs a-mls"><img src="img/libai.png?v20141106"/></div>
+    </div>
+    <div class="z-na  z-bai"><img src="img/pic11.png?v20141106"/></div>
+    <a class="index_link btn_down" index="3"></a>
+    <div class="jyl-logo"><img src="img/jyl-logo.png?v20141106"/></div>
+    <div class="logo"><img src="img/logo.png?v20141106"/></div>
+</div>
+<div class="bh firsts4 ace" style="display:none">
+    <div class="wrap-fir">
+        <div class="names na"><img src="img/pic17.png?v20141106"/></div>
+        <div class="namesv cm"><img src="img/pic18.png?v20141106"/></div>
+        <div class="axing"><img src="img/pic16.png?v20141106"/></div>
+        <div class="ming"><img src="img/qiamin.png?v20141106"/></div>
+    </div>
+    <a class="index_link btn_down" index="4"></a>
+    <div class="jyl-logo jyl-logo2"><img src="img/jyl-logo.png?v20141106"/></div>
+    <div class="logo"><img src="img/logo.png?v20141106"/></div>
+    <div class="sanjiao z-na"><img src="img/sjx.png?v20141106"/></div>
+</div>
+<div class="bh firsts5 ace" style="display:none">
+    <div class="z-naa mas"><img src="img/mop1.png?v20141106"/></div>
+    <div class="hid">
+        <div class="acss"><img src="img/fu.png?v20141106"/></div>
+    </div>
+    <div class="logo"><img src="img/logo.png?v20141106"/></div>
+    <!--llcly btn待续-->
+    <ul class="btn">
+        <li class="div_1"><a href="http://mp.weixin.qq.com/s?__biz=MzA5Mzg3MTYzNw==&mid=201554785&idx=1&sn=ecf76dc2f556dea8eab8bbfecb2cb1cb#rd"><img src="img/btn1.png?v20141106"/>金手指详情</a></li>
+        <li class="div_2"  onclick="document.getElementById('pop-up').style.display='block';"><a><img src="img/btn2.png?v20141106"/>分享好友</a></li>
+    </ul>
+</div>
+<div class="cc-d" style="display:none">
+    <a href="javascript:;" class="curren"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+</div>
+
+<div id="pop-up" style=" display:none;" onclick="document.getElementById('pop-up').style.display='none';">
+       <div class="pop"></div>
+    </div>
+
+<script>
+$(function () {
+    var H;
+    setTimeout(function () {
+        window.scrollTo(0, 1);
+    }, 100);
+    setTimeout(function () {
+        H = $(window).innerHeight()
+    }, 500);
+    var curr = 0, len = $('.cc-d a').size();
+    var start, isScroll;
+
+    $(window).bind('touchstart', function (e) {
+        if (!H) {
+            H = $(window).innerHeight()
+        }
+        start = {
+            y: e.originalEvent.touches[0].pageY,
+            t: Date.now()
+        };
+    }).bind('touchmove', function (e) {
+        e.preventDefault();
+        return false;
+
+    }).bind('touchend', function (e) {
+        var y = start.y - e.originalEvent.changedTouches[0].pageY;
+        if (Math.abs(y) > 40 && Date.now() - start.t < 300) {
+            if (y > 0) {
+                if (curr < len - 1) {
+                    sw.call($('.cc-d a').get(curr + 1));
+                }
+            } else {
+                if (curr > 0) {
+                    sw.call($('.cc-d a').get(curr - 1));
+                }
+            }
+        }
+    }).bind('resize', function () {
+        H = $(window).innerHeight();
+    });
+
+    $('.index_link').on('click', function () {
+        if (!isScroll) {
+            isScroll = true;
+            $('.cc-d a').eq(curr).removeClass('curren');
+            $('.cc-d a').eq(curr + 1).addClass('curren');
+            $('html, body').stop().delay(200).animate({scrollTop: (curr + 1) * H}, 300);
+            swAnimate(curr + 1);
+            curr += 1;
+        }
+    });
+
+    $('.cc-d a').on('click', sw);
+
+    function sw() {
+        if (!isScroll) {
+            var index = $(this).index();
+            if (index !== curr) {
+                isScroll = true;
+                $('.cc-d a').eq(curr).removeClass('curren');
+                $(this).addClass('curren');
+                $('html, body').stop().delay(200).animate({scrollTop: index * H}, 300);
+                swAnimate(index);
+                curr = index;
+            }
+        }
+    }
+
+    function swAnimate(i) {
+        $('.bh').eq(curr).removeClass('hover').addClass('ace');
+        setTimeout(function () {
+            $('.bh').eq(i).removeClass('ace').addClass('hover');
+            isScroll = false;
+            /*if(i == 4){
+             setTimeout(function(){
+             $('.dun').addClass('dun_show');
+             }, 30);
+             }*/
+
+        }, 500);
+    }
+/*
+    $('.dun').get(0).addEventListener('webkitAnimationEnd', function () {
+        $(this).removeClass('dun_show')
+    }, !1);
+    $(".z-los").click(function () {
+        $(".hid").stop().fadeIn("slow")
+    })
+    $(".hid").click(function () {
+        $(".hid").stop().fadeOut("slow")
+    })
+*/
+});
+</script>
+
+
+
+<script type="text/javascript">
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		window.shareData = {
+			"imgUrl": "img/200.jpg",
+			"timeLineLink": "http://my.exweixin.com/xyl/newideas.html",
+			"sendFriendLink": "http://my.exweixin.com/xyl/newideas.html",
+			"weiboLink": "http://my.exweixin.com/xyl/newideas.html",
+			"tTitle": "成功新主张，创业新定义，新玉麟金手指计划期待您的加入！",
+			"tContent": "成功新主张，创业新定义，新玉麟金手指计划期待您的加入！",
+			"fTitle": "成功新主张，创业新定义，新玉麟金手指计划期待您的加入！",
+			"fContent": "成功新主张，创业新定义，新玉麟金手指计划期待您的加入！",
+			"wContent": "成功新主张，创业新定义，新玉麟金手指计划期待您的加入！",
+		};
+		// 发送给好友
+		WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+			WeixinJSBridge.invoke('sendAppMessage', {
+				"img_url": window.shareData.imgUrl,
+				"img_width": "640",
+				"img_height": "640",
+				"link": window.shareData.sendFriendLink,
+				"desc": window.shareData.fContent,
+				"title": window.shareData.fTitle
+			}, function (res) {
+				_report('send_msg', res.err_msg);
+			})
+		});
+
+		// 分享到朋友圈
+		WeixinJSBridge.on('menu:share:timeline', function (argv) {
+			WeixinJSBridge.invoke('shareTimeline', {
+				"img_url": window.shareData.imgUrl,
+				"img_width": "640",
+				"img_height": "640",
+				"link": window.shareData.timeLineLink,
+				"desc": window.shareData.tContent,
+				"title": window.shareData.tTitle
+			}, function (res) {
+				_report('timeline', res.err_msg);
+			});
+		});
+
+		// 分享到微博
+		WeixinJSBridge.on('menu:share:weibo', function (argv) {
+			WeixinJSBridge.invoke('shareWeibo', {
+				"content": window.shareData.wContent,
+				"url": window.shareData.weiboLink,
+			}, function (res) {
+				_report('weibo', res.err_msg);
+			});
+		});
+	}, false)
+</script>
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F921b4696aec0527b77e8a3edc6d65da1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>
