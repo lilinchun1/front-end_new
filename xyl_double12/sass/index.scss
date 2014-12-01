@@ -246,4 +246,45 @@
     background: $color-red;
   }
 }
+.level-info{
+  position: relative;
+  margin: 12px auto 0 auto;
+  width: 70%;
+  height: 20px;
+  line-height: 20px;
+  border: 1px solid $border-color;
+  color: #ffffff;
+  background-color: $color-red;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 1.2em;
+  &:before{
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: -17px;
+    left: 50%;
+    margin-left: -9px;
+    width: 0;
+    height: 0;
+    border: 9px solid transparent;
+    border-bottom: 9px solid $color-red;
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: -18px;
+    left: 50%;
+    margin-left: -9px;
+    width: 0;
+    height: 0;
+    border: 9px solid transparent;
+    border-bottom: 9px solid $border-color;
+  }
+  em{
+    color: #f4f712;
+    font-size: 1.4em;
+  }
+}
 /*-----------------------price end----------------------*/
