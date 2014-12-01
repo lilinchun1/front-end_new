@@ -18,9 +18,13 @@
 .header{
   position: relative;
   @extend %wrap-100p;
+  .head-pic{
+    @extend %wrap-100p;
+  }
 }
 .countdown{
   @extend %wrap-100p;
+  margin-bottom: 5px;
 }
 .countdown-tt{
   margin: 0 auto;
@@ -67,6 +71,7 @@
       line-height: 28px;
       text-align: center;
       color: #ffffff;
+      text-shadow: 6px 6px 6px #860404;
       text-indent: 4px;
       letter-spacing: 7px;
       font-size: 2.2em;
@@ -107,7 +112,7 @@
   .countdown-con{
     height: 56px;
     .clock{
-      width: 64%;
+      width: 48%;
       li{
         height: 56px;
       }
