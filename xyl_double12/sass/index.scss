@@ -138,9 +138,112 @@
   }
 }
 /*-----------------------header end----------------------*/
+
+/*-----------------------slider start----------------------*/
 .slider{
   margin-top: 7px;
   @extend %wrap-100p;
   height: 215px;
   background: #ffffff;
 }
+.slider-tt{
+  height: 37px;
+  line-height: 37px;
+  font-size: 1.4em;
+  text-align: center;
+  em{
+    color: $color-red;}
+}
+.slider-con{
+  height: 178px;
+}
+/*-----------------------slider end----------------------*/
+
+/*-----------------------price start----------------------*/
+.price{
+  @extend %wrap-100p;
+  background: #ffffff;
+  border-top: 1px solid $border-color;
+}
+.price-class{
+  padding: 8px 0;
+  @extend %wrap-95p;
+  border-bottom: 1px solid $border-color;
+  li{
+    width: 33%;
+    float: left;
+    text-align: center;
+    &:nth-of-type(2){
+      border-left: 1px solid $border-color;
+      border-right: 1px solid $border-color;
+    }
+  }
+  p{
+    font-size: 1.4em;
+  }
+  .c333{
+    color: $font-color333;
+  }
+  .cf57520{
+    color: #f57520;
+  }
+  .cred{
+    color: $color-red;
+  }
+}
+.level{
+  margin: 0 auto;
+  width: 95%;
+  padding-top: 13px;
+  height: 24px;
+  li{
+    position: relative;
+    float: left;
+    width: 14.28%;
+  }
+  span{
+    position: absolute;
+    top: 3px;
+    left: 12px;
+    width: 10px;
+    height: 22px;
+    font-size: 1em;
+    color: #ffffff;
+    display: block;
+    line-height: 12px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .level-left{
+    font-weight: bold;
+    font-size: 1.4em;
+    color: $color-red;
+    line-height: 40px;
+  }
+  .level-right{
+    font-weight: bold;
+    font-size: 1.4em;
+    color: #000000;
+    line-height: 40px;
+  }
+  .icon-bq{
+    width: 35px;
+    height: 34px;
+  }
+  .active-icon{
+    .icon-bq{
+      fill: $color-red;
+    }
+  }
+}
+.progress{
+  @extend %wrap-95p;
+  height: 6px;
+  background: #282f32;
+  li{
+    width: 14.28%;
+    height: 6px;
+    background: $color-red;
+  }
+}
+/*-----------------------price end----------------------*/
