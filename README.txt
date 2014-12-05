@@ -7,3 +7,4 @@
 20141101	xyl_slider	WAP		新玉麟金手指计划[特辑]
 20141118	xyl_tongji	WAP/PC		新玉麟电商统计界面(TV/mobile)
 20141128        dc_hkh          WAP             大华华客惠
+20141201        xyl_shuang12    WAP             新玉麟双12

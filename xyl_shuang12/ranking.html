@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>排行榜</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="format-detection" content="telephone=no">
+    <link href="css/personage.css" rel="stylesheet" />
+    <script>
+        <!--
+        /*更换显示样式*/
+        function setTab(name,cursel,n){
+            for(i=1;i<=n;i++){
+                var menu=document.getElementById(name+i);
+                var con=document.getElementById("con_"+name+"_"+i);
+                menu.className=i==cursel?"hover":"";
+                con.style.display=i==cursel?"block":"none";}}
+        //-->
+    </script>
+
+</head>
+<body>
+<div class="min">
+    <!--滚动-->
+    <div class="top_slide_wrap">
+        <ul class="slide_box bxslider">
+            <li>
+
+                    <img src="images/img_per_0.jpg" />
+
+            </li>
+            <li>
+
+                <img src="images/img_per_1.png" />
+
+
+            </li>
+            <li>
+
+                <img src="images/img_per_2.png" />
+
+
+            </li>
+            <li>
+
+                <img src="images/img_per_3.png" />
+
+
+            </li>
+
+        </ul>
+    </div>
+<!--信息-->
+    <div class="top">    <!--团队跟人气没有这块-->
+        <div class="img_longBox">
+            <div class="img_long_1"></div>
+        </div>
+
+        <div class="charBox_1">
+            <div class="char_1"><img src="images/img_king_1.png"></div>
+            <div class="char_2">十万豪车大礼</div>
+       <!--     <div class="char_2">业绩：<span>￥2000元</span></div>-->
+
+        </div>
+        <div class="img_long_char"> 测试名字可以有多长不串行的小店的业绩</div>
+    </div>
+
+
+
+
+
+<!--选项卡-->
+
+<div id="Tab1">
+    <div class="Menubox">
+        <ul>
+            <li id="one1" onclick="setTab('one',1,4)" class="hover">个人销售榜</li>
+            <li id="one2" onclick="setTab('one',2,4)" style="width:33.33333333333%;">团队销售榜</li>
+            <li id="one3" onclick="setTab('one',3,4)">人气排行榜</li>
+
+        </ul>
+    </div>
+    <div class="Contentbox">
+        <div id="con_one_1" class="con_one_1_0">
+            本榜单以活动期间每个参与活动的微媒店铺业绩进行排名。
+        </div>
+        <div id="con_one_2" style="display:none"class="con_one_1_0">本榜单以活动期间每个参加活动的微媒，其直属团队的业绩进行排名。</div>
+        <div id="con_one_3" style="display:none"class="con_one_1_0">本榜单以活动期间每个参加活动的微媒，其直属团队的业绩进行排名。</div>
+
+    </div>
+</div>
+<div class="stripBox">
+    <div class="strip"></div>
+    <div class="strip_char">
+        <a href="#">
+            <span>查看个人奖品设置</span><!--点击不同的按钮有不同的文字-->
+    <!--      <span>查看团队奖品设置</span>
+            <span>查看人气奖品设置</span>  -->
+        </a>
+    </div>
+</div>
+
+<!--列表-->
+    <div class="surfaceBox" >
+        <ul class="surface">
+            <li class="count_1">244</li>
+            <li class="count"><img src="images/img_0.jpg "/></li>
+            <li class="attention">
+                <div>用户名&nbsp;小店业绩啊啊啊啊啊啊啊啊啊啊啊啊啊<div>
+            </li>
+            <li style="float:right;">
+                <div class="money">￥&nbsp;200</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="surfaceBox" >
+        <ul class="surface">
+            <li class="count_1">244</li>
+            <li class="count"><img src="images/img_0.jpg " /></li>
+            <li class="attention">
+                <div>用户名&nbsp;小店业绩啊啊啊啊啊啊啊啊啊啊啊啊啊<div>
+            </li>
+            <li style="float:right;">
+                <div class="money">￥&nbsp;2000</div>
+            </li>
+        </ul>
+    </div>
+
+<div class="surfaceBox" >
+    <ul class="surface">
+        <li class="count_1">12</li>
+        <li class="count"><img src="images/img_0.jpg " /></li>
+        <li class="attention">
+            <div>用户名&nbsp;小店业绩啊啊啊啊啊啊啊啊啊啊啊啊啊<div>
+        </li>
+        <li style="float:right;">
+            <div class="money">￥&nbsp;200000</div>
+        </li>
+    </ul>
+</div>
+    <div class="surfaceBox" >
+        <ul class="surface">
+            <li class="count_1">1221</li>
+            <li class="count"><img src="images/img_0.jpg " /></li>
+            <li class="attention">
+                <div>用户名&nbsp;小店业绩啊啊啊啊啊啊啊啊啊啊啊啊啊<div>
+            </li>
+            <li style="float:right;">
+                <div class="money">￥&nbsp;2000000</div>
+            </li>
+        </ul>
+    </div>
+
+    <script src="js/jquery-1.11.1.min_044d0927.js">
+    </script>
+    <script src="js/jquery.bxslider_e88acd1b.js">
+    </script>
+    <script src="js/index_5d791568.js">
+    </script>
+</div>
+</body>
+</html>
