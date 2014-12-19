@@ -1,3 +1,7 @@
+/**
+ * Created by 闫继鹏 on 2014/12/2.
+ */
+
 (function($){
     /*
      @object config : {

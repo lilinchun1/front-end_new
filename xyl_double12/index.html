@@ -139,10 +139,10 @@
             <span class="statistics-number-left">数量：</span>
             <div class="select-number">
                 <span class="left">-</span>
-                <input class="select-number-input" type="text" name="" id="" placeholder="1"/>
+                <input class="select-number-input" type="text" name="" id="teambug_num_input" placeholder="1" oninput="teambug_num_input(this)"/>
                 <span class="right">+</span>
             </div>
-            <span class="statistics-number-right">供应量：901件</span>
+            <span class="statistics-number-right">供应量：<span id="stock_num">901</span>件</span>
         </div>
         <p>
             <input type="checkbox" name="" id=""/><label><a href="">《团购条款》已阅读，同意</a></label>
@@ -162,6 +162,9 @@
     <footer class="footer">
         易享科技出品
     </footer>
+    <section class="pay">
+
+    </section>
 </div>
 
 
@@ -172,5 +175,6 @@
 <!--轮播图js-->
 <script type="text/javascript" src="js/mggScrollImg.js"></script>
 <script type="text/javascript" src="js/double12_carousel.js"></script>
-
+<!--数量-->
+<script type="text/javascript" src="js/teambug_num.js"></script>
 </html>
