@@ -108,7 +108,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 .wd-logo{
   position: absolute;
   left: 50%;
-  bottom: 10px;
+  bottom: 30px;
   margin-left: -38px;
   width: 75px;
   height: 15px;
@@ -118,6 +118,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   }
 }
 .next-btn{
+  top: 64%;
   background: url(../img/next-btn.png) 0 0 no-repeat;
   -webkit-background-size: 100% auto;
   background-size: 100% auto;
@@ -208,7 +209,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 }
 .list-wrap{
   position: absolute;
-  bottom: 35px;
+  bottom: 60px;
   left: 50%;
   margin-left: -148px;
   width: 296px;
@@ -312,7 +313,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
     height: 52px;
   }
   .wd-logo{
-    bottom: 20px;
+    bottom: 60px;
     margin-left: -75px;
     width: 150px;
     height: 30px;
@@ -364,7 +365,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
     }
   }
   .list-wrap{
-    bottom: 70px;
+    bottom: 200px;
     left: 50%;
     margin-left: -295px;
     width: 590px;
