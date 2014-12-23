@@ -307,7 +307,19 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   position: fixed;
   top: 0;
 }
+.list-none-info{
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+  text-align: center;
+  font-size: 1.6em;
+  color: #fde052;
+}
 @media screen and (min-width: 768px){
+  .list-none-info{
+    bottom: 15%;
+    font-size: 2.6em;
+  }
   .index-btn{
     margin-left: -110px;
     width: 220px;
