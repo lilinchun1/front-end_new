@@ -164,7 +164,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 }
 .info-wrap{
   position: absolute;
-  top: 12%;
+  top: 115px;
   left: 50%;
   margin-left: -110px;
   padding: 0 10px;
@@ -318,6 +318,11 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 .list-wd-logo{
   bottom: 150px;
 }
+@media screen and (min-width: 375px){
+  .info-wrap{
+    top: 145px;
+  }
+}
 @media screen and (min-width: 768px){
   .list-none-info{
     font-size: 2.6em;
@@ -355,7 +360,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
     font-size: 2.2em;
   }
   .info-wrap{
-
+    top: 320px;
     margin-left: -220px;
     padding: 0 20px;
     width: 400px;
@@ -429,5 +434,10 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   }
   .list-wd-logo{
     bottom: 360px;
+  }
+}
+@media screen and (min-width: 1024px){
+  .info-wrap{
+    top: 445px;
   }
 }
