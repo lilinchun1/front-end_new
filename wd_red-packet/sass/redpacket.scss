@@ -164,7 +164,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 }
 .info-wrap{
   position: absolute;
-  top: 20%;
+  top: 12%;
   left: 50%;
   margin-left: -110px;
   padding: 0 10px;
@@ -208,8 +208,8 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   }
 }
 .list-wrap{
-  position: absolute;
-  bottom: 60px;
+  position: relative;
+  top: -210px;
   left: 50%;
   margin-left: -148px;
   width: 296px;
@@ -315,6 +315,9 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   font-size: 1.6em;
   color: #fde052;
 }
+.list-wd-logo{
+  bottom: 150px;
+}
 @media screen and (min-width: 768px){
   .list-none-info{
     font-size: 2.6em;
@@ -352,7 +355,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
     font-size: 2.2em;
   }
   .info-wrap{
-    top: 24%;
+
     margin-left: -220px;
     padding: 0 20px;
     width: 400px;
@@ -377,7 +380,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
     }
   }
   .list-wrap{
-    bottom: 200px;
+    top: -530px;
     left: 50%;
     margin-left: -295px;
     width: 590px;
@@ -423,5 +426,8 @@ input[type="button"], input[type="submit"], input[type="reset"] {
       font-size: 1.8em;
     }
 
+  }
+  .list-wd-logo{
+    bottom: 360px;
   }
 }
