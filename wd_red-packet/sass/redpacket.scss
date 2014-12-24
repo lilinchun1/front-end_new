@@ -299,8 +299,8 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   z-index: 2;
   width: 100%;
   height: 100%;
-  background-image:-webkit-linear-gradient(180deg,rgba(147,165,138,1),rgba(25,8,39,1));
-  background-image:linear-gradient(180deg,rgba(147,165,138,1),rgba(25,8,39,1));
+  background-image:-webkit-linear-gradient(180deg,rgba(147,165,138,.6),rgba(25,8,39,.6));
+  background-image:linear-gradient(180deg,rgba(147,165,138,.6),rgba(25,8,39,.6));
   img{
     width: 100%;
   }
@@ -325,12 +325,24 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   -webkit-background-size: 100% auto;
   background-size: 100% auto;
 }
+.hb-wz{
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  font-size: 1.6em;
+  color: #fde052;
+}
 @media screen and (min-width: 375px){
   .info-wrap{
     top: 145px;
   }
 }
 @media screen and (min-width: 768px){
+  .hb-wz{
+    height: 88px;
+    line-height: 88px;
+    font-size: 2.2em;
+  }
   .list-none-info{
     font-size: 2.6em;
   }
