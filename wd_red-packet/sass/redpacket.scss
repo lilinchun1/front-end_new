@@ -162,6 +162,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   -webkit-background-size: 100% auto;
   background-size: 100% auto;
 }
+
 .info-wrap{
   position: absolute;
   top: 115px;
@@ -317,6 +318,11 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 }
 .list-wd-logo{
   bottom: 150px;
+}
+.info-wrap .huoban-btn{
+  background: url(../img/haoyou-btn.png) 0 0 no-repeat;
+  -webkit-background-size: 100% auto;
+  background-size: 100% auto;
 }
 @media screen and (min-width: 375px){
   .info-wrap{
