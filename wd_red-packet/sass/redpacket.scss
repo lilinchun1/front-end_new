@@ -220,6 +220,10 @@ input[type="button"], input[type="submit"], input[type="reset"] {
     height: 44px;
     color: #ffffff;
     border-bottom: 1px solid #dd6d78;
+    &:nth-of-type(1){
+      padding: 10px 0;
+      height: auto;
+    }
     .list-tt{
       margin-top: 2px;
       float: left;
@@ -326,8 +330,6 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   background-size: 100% auto;
 }
 .hb-wz{
-  height: 44px;
-  line-height: 44px;
   text-align: center;
   font-size: 1.6em;
   color: #fde052;
@@ -339,8 +341,6 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 }
 @media screen and (min-width: 768px){
   .hb-wz{
-    height: 88px;
-    line-height: 88px;
     font-size: 2.2em;
   }
   .list-none-info{
@@ -459,4 +459,5 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   .info-wrap{
     top: 445px;
   }
+
 }
