@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection">
+<meta name="format-detection" content="telephone=no">
+<title>floatNotify的demo</title>
+<style>
+.c-float-modePop{text-align:center}.c-float-modePop .warnMsg{color:#fff}.c-float-modePop button{padding:6px 9px;color:#949494;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#404040),color-stop(100%,#2e2e2e));border:0;-webkit-border-radius:2px}.c-float-shade{width:100%;display:block;position:absolute;z-index:99;background-color:#000;opacity:.5;top:0;left:0}.c-float-shade.hide{display:none}.c-float-popWrap{width:220px;border-radius:2px;z-index:9999;position:absolute;overflow:hidden}.c-float-popWrap .c-float-modePop{background-color:rgba(51,51,51,.9);border-radius:2px;padding:15px}.c-float-popWrap .c-float-modePop .warnMsg{padding:0;font-size:1rem}.c-float-popWrap .c-float-modePop .content{margin-top:10px}.c-float-popWrap .c-float-modePop .doBtn{width:190px;margin-top:10px}.c-float-popWrap .c-float-modePop button{width:80px;height:30px;line-height:30px;color:#444;font-size:1rem;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#eee),color-stop(100%,#999));border:0;-webkit-border-radius:2px;padding:0;margin:10px 5px 0}.c-float-popWrap.hide{display:none;-webkit-box-shadow:none}.c-float-popWrap.show{display:block;-webkit-box-shadow:0 0 2px 2px rgba(0,0,0,.3)}.c-float-popWrap.msgMode .c-float-modePop .content,.c-float-popWrap.msgMode .c-float-modePop .doBtn{display:none}.c-float-popWrap.alertMode .c-float-modePop .content{display:none}.c-float-popWrap.alertMode .c-float-modePop .doBtn .cancel{display:none}.c-float-popWrap.confirmMode .c-float-modePop .content,.c-float-popWrap.confirmMode .c-float-modePop .doBtn{display:block}
+</style>
+</head>
+<body>
+<h2>floatNotify的demo</h2>
+<p><a href="https://raw.githubusercontent.com/enson/floatNotify/master/1.0/build/index.css">floatNotify CSS 样式</a></p>
+
+<button class="flash-mode"   id="show">闪现模式</button><br />
+<button class="msg-mode"     id="msg">消息模式</button><br />
+<button class="alert-mode"   id="warn">警告模式</button><br />
+<button class="confirm-mode" id="sure">确认模式</button><br />
+
+<br />
+<textarea style="width:100%"></textarea>
+<script src="lib/zepto.min.js"></script>
+<script src="lib/notification.js"></script>
+<script type="text/javascript">
+var touchMethod ="click";
+$(document).ready(function(){
+	  $("#msg").on(touchMethod,function(){
+		  floatNotify.msg('消息模式~').show();
+	  });
+
+	  $("#show").on(touchMethod,function(){
+		  floatNotify.simple('闪现模式~',1000);
+	  });
+	  
+	 $("#warn").on(touchMethod,function(){
+		 floatNotify.alert('警告模式弹出框', function() {
+		        this.hide();
+		    }, {useTap : false}).show();
+	  });
+	  
+	 $("#sure").on(touchMethod,function(){
+		 floatNotify.confirm('确认模式弹出框',
+		            '<input type="text" size="20" placeholder="请输入数字" />',
+		            function(e, isConfirm) {
+		                if (isConfirm) {
+		                    alert($('.c-float-popWrap .content input').val());
+		                }
+		                this.hide();
+		            }).show();
+	  });
+});
+</script>
+ </body>
+</html>

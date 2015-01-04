@@ -50,7 +50,6 @@ img{
     background-size: 100%;
     width: 70px;
     height: 70px;
-    border: 2px #ffffff solid;
     border-radius: 60px;
     -o-border-radius: 60px;
     -moz-border-radius: 60px;
@@ -58,7 +57,15 @@ img{
     float: left;
     margin-left: 10px;
     margin-right: 10px;
+    border: 2px #ffffff solid;
 
+}
+.img_long img{
+    width: 100%;
+    border-radius: 60px;
+    -o-border-radius: 60px;
+    -moz-border-radius: 60px;
+    -webkit-border-radius: 60px;
 }
 .charBox{
     float: left;
@@ -379,6 +386,7 @@ img{
 .applyBox a img{
     width: 40%;
     margin-left: 30%;
+    margin-right: 30%;
     position: fixed;
     bottom: 25px;
 }

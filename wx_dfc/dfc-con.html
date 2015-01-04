@@ -21,6 +21,8 @@
     <input type="text" value="" id="J_input2" style="position:relative;top: 40px;"/>
 <script src="js/propeller.js"></script>
 <script>
+	
+	var stop = true;
     var long = 0;
     var oInput = document.getElementById('J_input');
     var oInput2 = document.getElementById('J_input2');
@@ -29,13 +31,38 @@
         onRotate: function () {
             long += Math.abs(this.speed);
             /*console.log(long, long%360, this.speed);*/
-            oInput.value = long;
+            if(stop){
+            	;
+            }else{
+            	oInput.value = long;
+            }
+        },
+        onDragStart :function(){
+        	stop = false;
         }
 
     });
+    
+    var stopsec = 0;
     setInterval(function () {
-        oInput2.value = oInput.value;
-    },1000);
+    	if(stopsec > 1){
+    		alert('stop');
+    		stop = true;
+    		stopsec = 0;
+    	}
+    
+    	if(!stop){
+	        if(oInput2.value == oInput.value){
+	        	stopsec ++;
+	        }else{
+	        	stopsec = 0;
+	        	oInput2.value = oInput.value;
+	        }
+        }
+        console.log(stopsec);
+    },400);
+    
+    
     /*去掉iphone手机滑动默认行为*/
     $('body').on('touchmove', function (event) {
         event.preventDefault();
