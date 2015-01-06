@@ -15,7 +15,7 @@ $(document).ready(function () {
             // Using the flip method defined by the plugin:
             elem.flip({
                 direction: 'lr',
-                speed: 250,
+                speed: 300,
                 onBefore: function () {
                     // Insert the contents of the .sponsorData div (hidden from view with display:none)
                     // into the clicked .sponsorFlip div before the flipping animation starts:
@@ -69,12 +69,21 @@ $(document).ready(function () {
         $(".sponsorFlip:eq(" + p[1] + ")").trigger("click");
         $(".sponsorFlip:eq(" + p[2] + ")").trigger("click");
         setTimeout(function () {
-            $(".sponsorFlip:eq(" + p[0] + ")").revertFlip();
+            /*$(".sponsorFlip:eq(" + p[0] + ")").revertFlip();
             $(".sponsorFlip:eq(" + p[1] + ")").revertFlip();
-            $(".sponsorFlip:eq(" + p[2] + ")").revertFlip();
-        },1000)
+            $(".sponsorFlip:eq(" + p[2] + ")").revertFlip();*/
+            $(".sponsorFlip:eq(" + p[0] + ")").trigger("click");
+            $(".sponsorFlip:eq(" + p[1] + ")").trigger("click");
+            $(".sponsorFlip:eq(" + p[2] + ")").trigger("click");
+        },3000);
+
     }
-    setInterval(fanpai,2000);
-    fanpai();
+    var time1 = setInterval(fanpai,8000);
+
+    function myrefresh()
+    {
+        window.location.reload();
+    }
+    setTimeout('myrefresh()',600000); //指定1秒刷新一次
 
 });
