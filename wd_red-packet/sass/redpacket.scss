@@ -97,7 +97,7 @@ input[type="button"], input[type="submit"], input[type="reset"] {
 }
 .index-btn{
   position: absolute;
-  top: 80%;
+  top: 84%;
   left: 50%;
   margin-left: -55px;
   width: 110px;
@@ -343,11 +343,16 @@ input[type="button"], input[type="submit"], input[type="reset"] {
   .next-btn{
     top: 60%;
   }
-
+  .reg-alt{
+    font-size: 2em;
+  }
 }
 @media screen and (min-width: 768px){
   .next-btn{
     top: 70%;
+  }
+  .reg-alt{
+    font-size: 2em;
   }
   .hb-wz{
     font-size: 2.2em;
